@@ -22,3 +22,9 @@ h1{
 .row {
     height: 12.5%;
 }
+.player1Square{
+    background-color: white;
+}
+.player2Square{
+    background-color: black;
+}
