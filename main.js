@@ -62,7 +62,7 @@ function checkMoveIfValid(){
 
 function buildGameBoard(){
     var boardSize = { rows: 8, squares: 8 };
-    var gameBoard = $('#game-board');
+    var gameBoard = $('.gameBoardSquares');
 
     for(var rows=1; rows < boardSize.rows+1; rows++){
         var outerLoop = $("<div>").addClass("row");
