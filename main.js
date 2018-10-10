@@ -4,7 +4,7 @@ $(document).ready(init);
 var player1 = 1;
 var player2 = 2;
 var gameRound = 1; 
-
+var vectorArray = [[-1,-1],[1,1],[-1,0],[0,-1],[-1,1],[1,0],[0,1],[1,-1]];
 
 //***************************************************************
 //All functions that need to be initialized 
@@ -41,8 +41,9 @@ function player2(){
 }
 
 //***************************************************************
-function displayData(){
-
+// player = $(player1Square) or $(player2Square)
+function displayData(player){
+    var currentMove = $(event.currentTarget).addClass(player);
 }
 
 //***************************************************************
