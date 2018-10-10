@@ -1,0 +1,25 @@
+body{
+    margin: 0;
+}
+.outerSquare{
+    border: black solid 3px;
+    width: 23%;
+    height: 24.5%;
+}
+.innerSquare{
+    background-color: blue;
+    width: 50%;
+    height: 50%;
+    align-self: center;
+    position: relative;
+    top: 20%;
+    left: 20%;
+
+}
+.squareContainer {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-flow: row wrap;
+
+}
