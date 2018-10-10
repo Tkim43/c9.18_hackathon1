@@ -9,8 +9,8 @@ var gameRound = 1;
 //***************************************************************
 //All functions that need to be initialized 
 function init(){
+    buildGameBoard();
     $('.innerSquare').on('click', clickHandler)
-    
 }
 
 //***************************************************************
@@ -57,5 +57,20 @@ function startGameBoard(){
 
 //***************************************************************
 function checkMoveIfValid(){
+
+}
+
+function buildGameBoard(){
+    var boardSize = { rows: 8, squares: 8 };
+    var gameBoard = $('#game-board');
+
+    for(var rows=1; rows < boardSize.rows+1; rows++){
+        var outerLoop = $("<div>").addClass("row");
+        gameBoard.append(outerLoop);
+        for(var col =1 ;col <boardSize.squares+1; col++){
+                var square = $("<div>").addClass("dynamicSquare");
+                outerLoop.append(square);
+        }
+    }
 
 }

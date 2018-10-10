@@ -14,6 +14,7 @@ body{
     position: relative;
     top: 20%; 
     left: 20%;
+    display: inline-block;
 
 }
 .squareContainer {
@@ -23,6 +24,15 @@ body{
     flex-flow: row wrap;
 }
 
+<<<<<<< HEAD
+}
+.dynamicSquare{
+    background-color: green;
+}
+.row {
+    display: flex;
+    height: 12.5%;
+=======
 .innerSquare1 {
     background-color: black;
     width: 50%;
@@ -41,4 +51,5 @@ body{
     position: relative;
     top: 20%;
     left: 20%;
+>>>>>>> 1e3ab1ab56cab5831c65f705f8125d2b7e2871fe
 }
