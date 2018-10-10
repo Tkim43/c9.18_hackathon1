@@ -1,11 +1,10 @@
 body{
     margin: 0; 
 }
-.outerSquare{
-    border: black solid 3px;
-    width: 23%;
-    height: 24.5%;
+h1{
+    text-align: center;
 }
+<<<<<<< HEAD
 .innerSquare{
     background-color: blue;
     width: 50%;
@@ -19,37 +18,23 @@ body{
 }
 .squareContainer {
     width: 50vw;
+=======
+.gameBoardSquares{
+    width: 100vw;
+>>>>>>> 4f33ace3c3bd5f5669ce8a6ddfdc309280713211
     height: 100vh;
     display: flex;
-    flex-flow: row wrap;
-}
-
-<<<<<<< HEAD
+    flex-flow: column nowrap;
+    position: relative;
+    left: 10%;
 }
 .dynamicSquare{
     background-color: green;
+    display: inline-block;
+    height: 100%;
+    width: 10%;
+    border: solid black 3px;
 }
 .row {
-    display: flex;
     height: 12.5%;
-=======
-.innerSquare1 {
-    background-color: black;
-    width: 50%;
-    height: 50%;
-    align-self: center;
-    position: relative;
-    top: 20%;
-    left: 20%;
-}
-
-.innerSquare2 {
-    background-color: white; 
-    width: 50%;
-    height: 50%;
-    align-self: center;
-    position: relative;
-    top: 20%;
-    left: 20%;
->>>>>>> 1e3ab1ab56cab5831c65f705f8125d2b7e2871fe
 }
