@@ -1,4 +1,4 @@
-$(document).ready(init); 
+$(document).ready(init);   
 //***************************************************************
 //All global variables go down here:
 var player1 = 1;
