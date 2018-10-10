@@ -5,16 +5,18 @@ $(document).ready(init);
 //All global variables go down here:
 var player1 = 1;
 var player2 = 2;
-
-var gameRound = 1; 
+var gameRound = 1;
+var positionsArray = [];
 
 var vectorArray = [[-1,-1],[1,1],[-1,0],[0,-1],[-1,1],[1,0],[0,1],[1,-1]];
 
 //All functions that need to be initialized
 function init(){
     buildGameBoard();
-    $('.innerSquare').on('click', clickHandler);
+
+    $('.dynamicSquare').on('click', checkMoveIfValid);
     initializeStartingPieces();
+
     displayCurrentPlayer(gameRound)
 
 }
@@ -22,13 +24,7 @@ function init(){
 function clickHandler(){
     //if it's game round 1, then it's player 1's turn. call player1.
     //if it's game round 2, then it's player 2's turn. call player 2.
-    if ( gameRound === 1 ) {
 
-        player1(); 
-    } 
-    else {
-        player2(); 
-    }
 }
 
 function player1(){
@@ -47,16 +43,17 @@ function player2(){
 
 // player = $(player1Square) or $(player2Square)
 function displayData(player){
-    var currentMove = $(event.currentTarget).addClass(player);
+    $(event.currentTarget).addClass(player);
 }
 
 
 function displayCurrentPlayer(gameRound) {
-    console.log('is this being hit?')
+    console.log('is this being hit?');
     if (gameRound === 1) {
         //highlight the player 1's position
         console.log('is first if statement getting hit?');
         $('.playerBorder1').addClass('highlightCP')
+        
     }
     else {
         //highlight the player 2's position
@@ -73,8 +70,25 @@ function startGameBoard(){
 
 }
 
-function checkMoveIfValid(){
+function checkMoveIfValid(player){
+   var down = [1,0];
+   var rowPosition = $(event.currentTarget).attr('row');
+   console.log(rowPosition);
+   var colPosition = $(event.currentTarget).attr('col');
+   console.log(colPosition);
+   if(gameBoardArray[rowPosition + down[1]][colPosition + down[0]] !== player){
+       console.log("1st if statement");
+      while(gameBoardArray[rowPosition][colPosition] !== undefined) {
+          console.log("in while loop");
+          if(gameBoardArray[rowPosition][colPosition] === player){
+                  gameBoardArray[rowPosition][colPosition].addClass('player1square');
+                  console.log("in 2nd if statement");
 
+          }
+          rowPosition += down[0];
+          colPosition += down[1];
+      }
+   }
 }
 
 function buildGameBoard(){
@@ -99,3 +113,12 @@ function initializeStartingPieces() {
     $("[row='3'][col='4']").addClass('player1Square');
     $("[row='4'][col='3']").addClass('player1Square');
 }
+
+   var gameBoardArray =[[0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0],
+                        [0,0,0,2,1,0,0,0],
+                        [0,0,0,1,2,0,0,0],
+                        [0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0]];
