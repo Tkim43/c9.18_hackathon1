@@ -1,16 +1,44 @@
 body{
     margin: 0; 
 }
-h1{
-    text-align: center;
-}
-.gameBoardSquares{
+.container {
     width: 100vw;
     height: 100vh;
+}
+.header {
+    width: 100%;
+    height: 10%;
+    text-align: center;
+}
+.playerContainer {
+    width: 20%;
+    background-color: bisque;
+    height: 80%;
+    display: inline-block;
+    vertical-align: top;
+}
+.playerBorder1, .playerBorder2 {
+    width: 100%;
+    height: 15%;
+}
+.player1, .player2{
+    position: relative;
+    top:37.5%;
+    width: 100%;
+    height: 100%; 
+    text-align: center;
+}
+.highlightCP {
+    border: 3px solid red; 
+}
+
+.gameBoardSquares{
+    width: 80%;
+    height: 80%;
     display: flex;
     flex-flow: column nowrap;
     position: relative;
-    left: 10%;
+    float: left;
 }
 .dynamicSquare{
     background-color: green;
