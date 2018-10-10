@@ -4,24 +4,8 @@ body{
 h1{
     text-align: center;
 }
-<<<<<<< HEAD
-.innerSquare{
-    background-color: blue;
-    width: 50%;
-    height: 50%;
-    align-self: center;
-    position: relative;
-    top: 20%; 
-    left: 20%;
-    display: inline-block;
-
-}
-.squareContainer {
-    width: 50vw;
-=======
 .gameBoardSquares{
     width: 100vw;
->>>>>>> 4f33ace3c3bd5f5669ce8a6ddfdc309280713211
     height: 100vh;
     display: flex;
     flex-flow: column nowrap;
