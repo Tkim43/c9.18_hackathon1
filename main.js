@@ -11,6 +11,7 @@ var gameRound = 1;
 function init(){
     buildGameBoard();
     displayCurrentPlayer();
+    initializeStartingPieces();
     //place enablePiecePlacement
 }
 
@@ -74,13 +75,33 @@ function buildGameBoard(){
     var boardSize = { rows: 8, squares: 8 };
     var gameBoard = $('.gameBoardSquares');
 
-    for(var rows=1; rows < boardSize.rows+1; rows++){
+    for(var rows=0; rows < boardSize.rows; rows++){
         var outerLoop = $("<div>").addClass("row");
         gameBoard.append(outerLoop);
-        for(var col =1 ;col <boardSize.squares+1; col++){
+        for(var col =0 ;col <boardSize.squares; col++){
                 var square = $("<div>").addClass("dynamicSquare");
                 outerLoop.append(square);
+                square.attr("col", col);
+                square.attr("row", rows);
+
         }
     }
-
 }
+
+function initializeStartingPieces() {
+    $("[row='3'][col='3']").addClass('player2Square');
+    $("[row='4'][col='4']").addClass('player2Square');
+    $("[row='3'][col='4']").addClass('player1Square');
+    $("[row='4'][col='3']").addClass('player1Square');
+}
+
+var gameBoardArray = [
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,1,2,0,0,0],
+    [0,0,0,2,1,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0]
+];
