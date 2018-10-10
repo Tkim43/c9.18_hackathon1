@@ -1,74 +1,77 @@
-$(document).ready(init); 
+$(document).ready(init);   
 //***************************************************************
 //All global variables go down here:
 var player1 = 1;
 var player2 = 2;
 var gameRound = 1; 
-
+var vectorArray = [[-1,-1],[1,1],[-1,0],[0,-1],[-1,1],[1,0],[0,1],[1,-1]];
 
 //***************************************************************
 //All functions that need to be initialized 
 function init(){
     buildGameBoard();
-    displayCurrentPlayer();
-    //place enablePiecePlacement
+    $('.innerSquare').on('click', clickHandler)
+    displayCurrentPlayer(gameRound)
 }
 
 //***************************************************************
-function enablePiecePlacement(){
-    //enable player to click on the valid positions. 
-    //if current player clicks on the player's valid positions, 
-            //then allow CP to place game piece -- call player1? (append) /
-    //else current player click on invalid, don't allow. 
+function clickHandler(){
+    //if it's game round 1, then it's player 1's turn. call player1.
+    //if it's game round 2, then it's player 2's turn. call player 2.
+    if ( gameRound === 1 ) {
+        player1(); 
+    } 
+    else {
+        player2(); 
+    }
 }
 
 //***************************************************************
 function player1(){
-    checkMoveIfValid();
+    checkMoveIfValid() 
     //check all valid moves for player 1, place game piece. 
     //call display data to flip all game pieces according to player 1's pieces
     //Change game round 
     gameRound = 2; 
-    //wipe away all the click handler. 
 }
 
 //***************************************************************
 function player2(){
-   
+
     gameRound = 1; 
 }
 
 //***************************************************************
 // player = $(player1Square) or $(player2Square)
 function displayData(player){
-    $(event.currentTarget).addClass(player);
+    var currentMove = $(event.currentTarget).addClass(player);
 }
 
-function displayCurrentPlayer() {
-    //Shows who the current player is and call the checkMoveIfValid function
-    checkMoveIfValid(gameRound);
+function displayCurrentPlayer(gameRound) {
+    console.log('is this being hit?')
+    if (gameRound === 1) {
+        //highlight the player 1's position
+        console.log('is first if statement getting hit?')
+        $('.playerBorder1').addClass('highlightCP')
+    }
+    else {
+        //highlight the player 2's position
+        console.log('is second if statement getting hit?')
+        $('.playerBorder2').addClass('highlightCP')
+    }
 }
-
-
-
-//***************************************************************
 function determineWiner(){
 
 }
 
 //***************************************************************
 function startGameBoard(){
-    //GameBoard at the start of the game.
-
+    
 }
 
 //***************************************************************
-function checkMoveIfValid(gameRound){
-//To display all areas that current player can move to 
-    enablePiecePlacement(); 
-    //call enablePiecePlacement to enable clicking on those positions.
-    //event delegation on classes
-    
+function checkMoveIfValid(){
+
 }
 
 function buildGameBoard(){
