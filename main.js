@@ -53,6 +53,7 @@ function displayCurrentPlayer(gameRound) {
         //highlight the player 1's position
         console.log('is first if statement getting hit?');
         $('.playerBorder1').addClass('highlightCP')
+        
     }
     else {
         //highlight the player 2's position
@@ -69,24 +70,25 @@ function startGameBoard(){
 
 }
 
-function checkMoveIfValid(){
-    console.log('has this been clicked?')
-    var squareElementColor = $(event.currentTarget).css("background-color");
-    var rowPosition = $(event.currentTarget).attr('row');
-    var colPosition = $(event.currentTarget).attr('col');
+function checkMoveIfValid(player){
+   var down = [1,0];
+   var rowPosition = $(event.currentTarget).attr('row');
+   console.log(rowPosition);
+   var colPosition = $(event.currentTarget).attr('col');
+   console.log(colPosition);
+   if(gameBoardArray[rowPosition + down[1]][colPosition + down[0]] !== player){
+       console.log("1st if statement");
+      while(gameBoardArray[rowPosition][colPosition] !== undefined) {
+          console.log("in while loop");
+          if(gameBoardArray[rowPosition][colPosition] === player){
+                  gameBoardArray[rowPosition][colPosition].addClass('player1square');
+                  console.log("in 2nd if statement");
 
-    positionsArray.push(rowPosition,colPosition);
-    for(var x =0; x < vectorArray.length; x++){
-        var newPosition = vectorArray[x] + positionsArray;
-        var newPositionColor = $(newPosition).css("background-color");
-        if(newPositionColor !== squareElementColor){
-            newPositionColor = squareElementColor;
-        }
-        else{
-            return;
-        }
-    }
-
+          }
+          rowPosition += down[0];
+          colPosition += down[1];
+      }
+   }
 }
 
 function buildGameBoard(){
