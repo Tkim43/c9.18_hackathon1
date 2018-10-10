@@ -5,8 +5,8 @@ $(document).ready(init);
 //All global variables go down here:
 var player1 = 1;
 var player2 = 2;
-
-var gameRound = 1; 
+var gameRound = 1;
+var positionsArray = [];
 
 var vectorArray = [[-1,-1],[1,1],[-1,0],[0,-1],[-1,1],[1,0],[0,1],[1,-1]];
 
@@ -14,8 +14,8 @@ var vectorArray = [[-1,-1],[1,1],[-1,0],[0,-1],[-1,1],[1,0],[0,1],[1,-1]];
 function init(){
     buildGameBoard();
 
-    $('.innerSquare').on('click', clickHandler)
-    initializeStartingPieces()
+    $('.innerSquare').on('click', clickHandler);
+    initializeStartingPieces();
 
     displayCurrentPlayer(gameRound)
 
@@ -49,12 +49,12 @@ function player2(){
 
 // player = $(player1Square) or $(player2Square)
 function displayData(player){
-    var currentMove = $(event.currentTarget).addClass(player);
+    $(event.currentTarget).addClass(player);
 }
 
 
 function displayCurrentPlayer(gameRound) {
-    console.log('is this being hit?')
+    console.log('is this being hit?');
     if (gameRound === 1) {
         //highlight the player 1's position
         console.log('is first if statement getting hit?');
@@ -76,6 +76,21 @@ function startGameBoard(){
 }
 
 function checkMoveIfValid(){
+    var squareElementColor = $(event.currentTarget).css("background-color");
+    var rowPosition = $(event.currentTarget).attr('row');
+    var colPosition = $(event.currentTarget).attr('col');
+
+    positionsArray.push(rowPosition,colPosition);
+    for(var x =0; x < vectorArray.length; x++){
+        var newPosition = vectorArray[i] + positionsArray;
+        var newPositionColor = newPosition.css("background-color");
+        if(newPositionColor !== squareElementColor){
+            newPositionColor = squareElementColor;
+        }
+        else{
+            return;
+        }
+    }
 
 }
 
@@ -101,3 +116,12 @@ function initializeStartingPieces() {
     $("[row='3'][col='4']").addClass('player1Square');
     $("[row='4'][col='3']").addClass('player1Square');
 }
+
+   var gameBoardArray =[[0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0],
+                        [0,0,0,2,1,0,0,0],
+                        [0,0,0,1,2,0,0,0],
+                        [0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0]];
