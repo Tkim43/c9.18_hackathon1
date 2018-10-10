@@ -13,8 +13,10 @@ var vectorArray = [[-1,-1],[1,1],[-1,0],[0,-1],[-1,1],[1,0],[0,1],[1,-1]];
 //All functions that need to be initialized
 function init(){
     buildGameBoard();
-    $('.innerSquare').on('click', clickHandler);
-    initializeStartingPieces();
+
+    $('.innerSquare').on('click', clickHandler)
+    initializeStartingPieces()
+
     displayCurrentPlayer(gameRound)
 
 }
