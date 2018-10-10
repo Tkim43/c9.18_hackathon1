@@ -10,12 +10,19 @@ var gameRound = 1;
 //All functions that need to be initialized 
 function init(){
     buildGameBoard();
+    $('.innerSquare').on('click', clickHandler)
 }
 
 //***************************************************************
 function clickHandler(){
     //if it's game round 1, then it's player 1's turn. call player1.
-    //if it's game round 2, then it's player 2's turn. call player 2. 
+    //if it's game round 2, then it's player 2's turn. call player 2.
+    if ( gameRound === 1 ) {
+        player1();
+    } 
+    else {
+        player2(); 
+    }
 }
 
 //***************************************************************
@@ -45,7 +52,7 @@ function determineWiner(){
 
 //***************************************************************
 function startGameBoard(){
-
+    
 }
 
 //***************************************************************

@@ -22,7 +22,9 @@ body{
     height: 100vh;
     display: flex;
     flex-flow: row wrap;
+}
 
+<<<<<<< HEAD
 }
 .dynamicSquare{
     background-color: green;
@@ -30,4 +32,24 @@ body{
 .row {
     display: flex;
     height: 12.5%;
+=======
+.innerSquare1 {
+    background-color: black;
+    width: 50%;
+    height: 50%;
+    align-self: center;
+    position: relative;
+    top: 20%;
+    left: 20%;
+}
+
+.innerSquare2 {
+    background-color: white; 
+    width: 50%;
+    height: 50%;
+    align-self: center;
+    position: relative;
+    top: 20%;
+    left: 20%;
+>>>>>>> 1e3ab1ab56cab5831c65f705f8125d2b7e2871fe
 }
