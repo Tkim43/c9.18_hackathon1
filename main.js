@@ -1,24 +1,29 @@
-$(document).ready(init);   
-//***************************************************************
+
+$(document).ready(init);
+
+
 //All global variables go down here:
 var player1 = 1;
 var player2 = 2;
+
 var gameRound = 1; 
+
 var vectorArray = [[-1,-1],[1,1],[-1,0],[0,-1],[-1,1],[1,0],[0,1],[1,-1]];
 
-//***************************************************************
-//All functions that need to be initialized 
+//All functions that need to be initialized
 function init(){
     buildGameBoard();
     $('.innerSquare').on('click', clickHandler)
+
     displayCurrentPlayer(gameRound)
+
 }
 
-//***************************************************************
 function clickHandler(){
     //if it's game round 1, then it's player 1's turn. call player1.
     //if it's game round 2, then it's player 2's turn. call player 2.
     if ( gameRound === 1 ) {
+
         player1(); 
     } 
     else {
@@ -26,7 +31,6 @@ function clickHandler(){
     }
 }
 
-//***************************************************************
 function player1(){
     checkMoveIfValid() 
     //check all valid moves for player 1, place game piece. 
@@ -35,17 +39,17 @@ function player1(){
     gameRound = 2; 
 }
 
-//***************************************************************
 function player2(){
 
     gameRound = 1; 
+
 }
 
-//***************************************************************
 // player = $(player1Square) or $(player2Square)
 function displayData(player){
     var currentMove = $(event.currentTarget).addClass(player);
 }
+
 
 function displayCurrentPlayer(gameRound) {
     console.log('is this being hit?')
@@ -60,16 +64,15 @@ function displayCurrentPlayer(gameRound) {
         $('.playerBorder2').addClass('highlightCP')
     }
 }
+
 function determineWiner(){
 
 }
 
-//***************************************************************
 function startGameBoard(){
-    
+
 }
 
-//***************************************************************
 function checkMoveIfValid(){
 
 }
@@ -82,8 +85,8 @@ function buildGameBoard(){
         var outerLoop = $("<div>").addClass("row");
         gameBoard.append(outerLoop);
         for(var col =1 ;col <boardSize.squares+1; col++){
-                var square = $("<div>").addClass("dynamicSquare");
-                outerLoop.append(square);
+            var square = $("<div>").addClass("dynamicSquare");
+            outerLoop.append(square);
         }
     }
 
