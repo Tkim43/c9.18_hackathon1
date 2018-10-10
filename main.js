@@ -14,7 +14,7 @@ var vectorArray = [[-1,-1],[1,1],[-1,0],[0,-1],[-1,1],[1,0],[0,1],[1,-1]];
 function init(){
     buildGameBoard();
 
-    $('.innerSquare').on('click', clickHandler);
+    $('.dynamicSquare').on('click', checkMoveIfValid);
     initializeStartingPieces();
 
     displayCurrentPlayer(gameRound)
@@ -24,13 +24,7 @@ function init(){
 function clickHandler(){
     //if it's game round 1, then it's player 1's turn. call player1.
     //if it's game round 2, then it's player 2's turn. call player 2.
-    if ( gameRound === 1 ) {
 
-        player1(); 
-    } 
-    else {
-        player2(); 
-    }
 }
 
 function player1(){
@@ -76,6 +70,7 @@ function startGameBoard(){
 }
 
 function checkMoveIfValid(){
+    console.log('has this been clicked?')
     var squareElementColor = $(event.currentTarget).css("background-color");
     var rowPosition = $(event.currentTarget).attr('row');
     var colPosition = $(event.currentTarget).attr('col');
