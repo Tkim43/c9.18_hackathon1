@@ -27,7 +27,7 @@ function clickHandler(){
 
 //***************************************************************
 function player1(){
-    checkMoveIfValid() 
+    checkMoveIfValid();
     //check all valid moves for player 1, place game piece. 
     //call display data to flip all game pieces according to player 1's pieces
     //Change game round 
@@ -43,7 +43,7 @@ function player2(){
 //***************************************************************
 // player = $(player1Square) or $(player2Square)
 function displayData(player){
-    var currentMove = $(event.currentTarget).addClass(player);
+    $(event.currentTarget).addClass(player);
 }
 
 //***************************************************************
