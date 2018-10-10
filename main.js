@@ -82,8 +82,8 @@ function checkMoveIfValid(){
 
     positionsArray.push(rowPosition,colPosition);
     for(var x =0; x < vectorArray.length; x++){
-        var newPosition = vectorArray[i] + positionsArray;
-        var newPositionColor = newPosition.css("background-color");
+        var newPosition = vectorArray[x] + positionsArray;
+        var newPositionColor = $(newPosition).css("background-color");
         if(newPositionColor !== squareElementColor){
             newPositionColor = squareElementColor;
         }
