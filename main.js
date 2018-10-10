@@ -24,6 +24,9 @@ function enablePiecePlacement(){
 
 //***************************************************************
 function player1(){
+    checkMoveIfValid();
+    //check all valid moves for player 1, place game piece. 
+    //call display data to flip all game pieces according to player 1's pieces
     //Change game round 
     gameRound = 2; 
     //wipe away all the click handler. 
@@ -36,17 +39,17 @@ function player2(){
 }
 
 //***************************************************************
+// player = $(player1Square) or $(player2Square)
+function displayData(player){
+    $(event.currentTarget).addClass(player);
+}
+
 function displayCurrentPlayer() {
     //Shows who the current player is and call the checkMoveIfValid function
     checkMoveIfValid(gameRound);
 }
 
 
-
-//***************************************************************
-function displayData(){
-
-}
 
 //***************************************************************
 function determineWiner(){
