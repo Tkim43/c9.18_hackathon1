@@ -1,41 +1,43 @@
-$(document).ready(init); 
+$(document).ready(init);
 //***************************************************************
 //All global variables go down here:
 var player1 = 1;
 var player2 = 2;
-var gameRound = 1; 
-
+var gameRound = 1;
+var vectorArray = [[-1,-1],[1,1],[-1,0],[0,-1],[-1,1],[1,0],[0,1],[1,-1]];
 
 //***************************************************************
-//All functions that need to be initialized 
+//All functions that need to be initialized
 function init(){
     buildGameBoard();
-    displayCurrentPlayer();
-    initializeStartingPieces();
-    //place enablePiecePlacement
+    $('.innerSquare').on('click', clickHandler)
 }
 
 //***************************************************************
-function enablePiecePlacement(){
-    //enable player to click on the valid positions. 
-    //if current player clicks on the player's valid positions, 
-            //then allow CP to place game piece -- call player1? (append) /
-    //else current player click on invalid, don't allow. 
+function clickHandler(){
+    //if it's game round 1, then it's player 1's turn. call player1.
+    //if it's game round 2, then it's player 2's turn. call player 2.
+    if ( gameRound === 1 ) {
+        player1();
+    }
+    else {
+        player2();
+    }
 }
 
 //***************************************************************
 function player1(){
     checkMoveIfValid();
-    //check all valid moves for player 1, place game piece. 
+    //check all valid moves for player 1, place game piece.
     //call display data to flip all game pieces according to player 1's pieces
-    //Change game round 
-    gameRound = 2; 
-    //wipe away all the click handler. 
+    //Change game round
+    gameRound = 2;
 }
 
 //***************************************************************
 function player2(){
-    gameRound = 1; 
+
+    gameRound = 1;
 }
 
 //***************************************************************
@@ -44,13 +46,6 @@ function displayData(player){
     $(event.currentTarget).addClass(player);
 }
 
-function displayCurrentPlayer() {
-    //Shows who the current player is and call the checkMoveIfValid function
-    checkMoveIfValid(gameRound);
-}
-
-
-
 //***************************************************************
 function determineWiner(){
 
@@ -58,50 +53,25 @@ function determineWiner(){
 
 //***************************************************************
 function startGameBoard(){
-    //GameBoard at the start of the game.
 
 }
 
 //***************************************************************
-function checkMoveIfValid(gameRound){
-//To display all areas that current player can move to 
-    enablePiecePlacement(); 
-    //call enablePiecePlacement to enable clicking on those positions.
-    //event delegation on classes
-    
+function checkMoveIfValid(){
+
 }
 
 function buildGameBoard(){
     var boardSize = { rows: 8, squares: 8 };
     var gameBoard = $('.gameBoardSquares');
 
-    for(var rows=0; rows < boardSize.rows; rows++){
+    for(var rows=1; rows < boardSize.rows+1; rows++){
         var outerLoop = $("<div>").addClass("row");
         gameBoard.append(outerLoop);
-        for(var col =0 ;col <boardSize.squares; col++){
-                var square = $("<div>").addClass("dynamicSquare");
-                outerLoop.append(square);
-                square.attr("col", col);
-                square.attr("row", rows);
-
+        for(var col =1 ;col <boardSize.squares+1; col++){
+            var square = $("<div>").addClass("dynamicSquare");
+            outerLoop.append(square);
         }
     }
-}
 
-function initializeStartingPieces() {
-    $("[row='3'][col='3']").addClass('player2Square');
-    $("[row='4'][col='4']").addClass('player2Square');
-    $("[row='3'][col='4']").addClass('player1Square');
-    $("[row='4'][col='3']").addClass('player1Square');
 }
-
-var gameBoardArray = [
-    [0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0],
-    [0,0,0,1,2,0,0,0],
-    [0,0,0,2,1,0,0,0],
-    [0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0]
-];
