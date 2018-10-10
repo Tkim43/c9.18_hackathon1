@@ -18,7 +18,7 @@ function clickHandler(){
     //if it's game round 1, then it's player 1's turn. call player1.
     //if it's game round 2, then it's player 2's turn. call player 2.
     if ( gameRound === 1 ) {
-        player1();
+        player1(); 
     } 
     else {
         player2(); 
