@@ -14,7 +14,7 @@ var vectorArray = [[-1,-1],[1,1],[-1,0],[0,-1],[-1,1],[1,0],[0,1],[1,-1]];
 function init(){
     buildGameBoard();
     $('.innerSquare').on('click', clickHandler)
-
+    initializeStartingPieces() 
     displayCurrentPlayer(gameRound)
 
 }
