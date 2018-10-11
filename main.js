@@ -5,6 +5,7 @@ $(document).ready(init);
 //All global variables go down here:
 var moveIsValid = false; 
 var gameRound = 1;
+var storePosition = []; 
 
 var vectorArray = [[-1,-1],[1,1],[-1,0],[0,-1],[-1,1],[1,0],[0,1],[1,-1]];
 
@@ -131,7 +132,7 @@ function determineWiner(){
 
 function startGameBoard(){
 function checkDown() {
-    
+
 }
 }
 function checkMoveIfValid(){
@@ -155,6 +156,7 @@ function checkMoveIfValid(){
         console.log("down: 1st if statement");
         while(gameBoardArray[rowPosition][colPosition] !== undefined) {
             console.log("down: in while loop");
+            storePosition.push("row = ", rowPosition )
             if(gameBoardArray[rowPosition][colPosition] === gameRound){
                 //convert this to the position that's at this div. 
                 //As it passes through and finds the end of the player's color, color all the boxes in-between. 
