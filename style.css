@@ -51,8 +51,8 @@ body{
     height: 12.5%;
 }
 .player1Square{
-    background-color: white;
+    background-color:black;
 }
 .player2Square{
-    background-color: black;
+    background-color:white;
 }

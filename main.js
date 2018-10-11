@@ -9,6 +9,37 @@ var gameRound = 1;
 
 var vectorArray = [[-1,-1],[1,1],[-1,0],[0,-1],[-1,1],[1,0],[0,1],[1,-1]];
 
+var gameBoardArray =[[0,0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0,0],
+                    [0,0,0,2,1,0,0,0],
+                    [0,0,0,1,2,0,0,0],
+                    [0,0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0,0]];
+
+//if encounters 0 = green, if 1 = black, if 2 = white; 
+// function buildGame(){
+//     var gameBoardSquares = $('.gameBoardSquares')
+//     for (var i = 0; i < gameBoardArray.length; i++) {
+//         for (var j = 0; j < gameBoardArray.length; j++) {
+//             if (gameBoardArray[i][j] === 0) {
+//                 var newDiv = $('<div>').addClass('dynmaicSquare')
+//                 $('.gameBoardSquares').append(newDiv)
+//             }
+//             else if (gameBoardArray[i][j] === 2) {
+//                 var newDiv2 = $('<div>').addClass('.playerSquare2')
+//                 $('.gameBoardSquares').append(newDiv2)
+//             }
+//             else {
+//                 var newDiv1 = $('<div>').addClass('.playerSquare1')
+//                 $('.gameBoardSquares').append(newDiv1)
+//             }
+//         }
+//     } 
+//     $('.playerContainer').append(gameBoardSquares);
+// }
+
 //All functions that need to be initialized
 function init(){
     buildGameBoard();
@@ -18,10 +49,10 @@ function init(){
 }
 
 function player1(){
-    //check all valid moves for player 1, place game piece. 
+    //check all valid moves for player 1, place game piece.
     //call display data to flip all game pieces according to player 1's pieces
-    //Change game round 
-    gameRound = 2; 
+    //Change game round
+    gameRound = 2;
 }
 
 function player2(){
@@ -40,7 +71,7 @@ function displayCurrentPlayer(gameRound) {
         //highlight the player 1's position
         console.log('is first if statement getting hit?');
         $('.playerBorder1').addClass('highlightCP')
-        
+
     }
     else {
         //highlight the player 2's position
@@ -58,31 +89,31 @@ function startGameBoard(){
 }
 
 function checkMoveIfValid(){
-   var down = [1,0];
-   var up = [-1,0];
-   var left = [0,-1];
-   var upRight = [-1,1];
-   var downRight = [1,1];
-   var right = [0,1];
-   var downLeft = [1,-1];
-   var rowPosition = $(event.currentTarget).attr('row');
-   var colPosition = $(event.currentTarget).attr('col');
-   colPosition = parseInt(colPosition);
-   rowPosition = parseInt(rowPosition);
-   if(gameBoardArray[rowPosition + down[0]][colPosition + down[1]] !== gameRound && gameBoardArray[rowPosition] !== undefined){
-       console.log("1st if statement");
-      while(gameBoardArray[rowPosition][colPosition] !== undefined && gameBoardArray[rowPosition] !== undefined) {
-          console.log("in while loop");
-          if(gameBoardArray[rowPosition][colPosition] === gameRound){
-                  $(event.currentTarget).addClass('player1Square');
-                  console.log("in 2nd if statement");
-                  return;
+    var down = [1,0];
+    var up = [-1,0];
+    var left = [0,-1];
+    var upRight = [-1,1];
+    var downRight = [1,1];
+    var right = [0,1];
+    var downLeft = [1,-1];
+    var rowPosition = $(event.currentTarget).attr('row');
+    var colPosition = $(event.currentTarget).attr('col');
+    colPosition = parseInt(colPosition);
+    rowPosition = parseInt(rowPosition);
+    if(gameBoardArray[rowPosition + down[0]][colPosition + down[1]] !== gameRound && gameBoardArray[rowPosition] !== undefined){
+        console.log("1st if statement");
+        while(gameBoardArray[rowPosition][colPosition] !== undefined && gameBoardArray[rowPosition] !== undefined) {
+            console.log("in while loop");
+            if(gameBoardArray[rowPosition][colPosition] === gameRound){
+                $(event.currentTarget).addClass('player1Square');
+                console.log("in 2nd if statement");
+                return;
 
-          }
-          rowPosition += down[0];
-          colPosition += down[1];
-      }
-   }
+            }
+            rowPosition += down[0];
+            colPosition += down[1];
+        }
+    }
 
     if(gameBoardArray[rowPosition + up[0]][colPosition + up[1]] !== gameRound){
         console.log("1st if statement");
@@ -197,12 +228,3 @@ function initializeStartingPieces() {
     $("[row='3'][col='4']").addClass('player1Square');
     $("[row='4'][col='3']").addClass('player1Square');
 }
-
-   var gameBoardArray =[[0,0,0,0,0,0,0,0],
-                        [0,0,0,0,0,0,0,0],
-                        [0,0,0,0,0,0,0,0],
-                        [0,0,0,2,1,0,0,0],
-                        [0,0,0,1,2,0,0,0],
-                        [0,0,0,0,0,0,0,0],
-                        [0,0,0,0,0,0,0,0],
-                        [0,0,0,0,0,0,0,0]];
