@@ -10,9 +10,41 @@ var positionsArray = [];
 
 var vectorArray = [[-1,-1],[1,1],[-1,0],[0,-1],[-1,1],[1,0],[0,1],[1,-1]];
 
+var gameBoardArray =[[0,0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0,0],
+                    [0,0,0,2,1,0,0,0],
+                    [0,0,0,1,2,0,0,0],
+                    [0,0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0,0]];
+
+//if encounters 0 = green, if 1 = black, if 2 = white; 
+// function buildGame(){
+//     var gameBoardSquares = $('.gameBoardSquares')
+//     for (var i = 0; i < gameBoardArray.length; i++) {
+//         for (var j = 0; j < gameBoardArray.length; j++) {
+//             if (gameBoardArray[i][j] === 0) {
+//                 var newDiv = $('<div>').addClass('dynmaicSquare')
+//                 $('.gameBoardSquares').append(newDiv)
+//             }
+//             else if (gameBoardArray[i][j] === 2) {
+//                 var newDiv2 = $('<div>').addClass('.playerSquare2')
+//                 $('.gameBoardSquares').append(newDiv2)
+//             }
+//             else {
+//                 var newDiv1 = $('<div>').addClass('.playerSquare1')
+//                 $('.gameBoardSquares').append(newDiv1)
+//             }
+//         }
+//     } 
+//     $('.playerContainer').append(gameBoardSquares);
+// }
+
 //All functions that need to be initialized
 function init(){
     buildGameBoard();
+
 
     $('.dynamicSquare').on('click', checkMoveIfValid);
     initializeStartingPieces();
@@ -48,16 +80,13 @@ function displayData(player){
 
 
 function displayCurrentPlayer(gameRound) {
-    console.log('is this being hit?');
     if (gameRound === 1) {
         //highlight the player 1's position
-        console.log('is first if statement getting hit?');
         $('.playerBorder1').addClass('highlightCP')
         
     }
     else {
         //highlight the player 2's position
-        console.log('is second if statement getting hit?');
         $('.playerBorder2').addClass('highlightCP')
     }
 }
@@ -72,21 +101,29 @@ function startGameBoard(){
 
 function checkMoveIfValid(player){
    var down = [1,0];
-   var rowPosition = $(event.currentTarget).attr('row');
+   var rowPosition = parseInt($(event.currentTarget).attr('row'));
+   var colPosition = parseInt($(event.currentTarget).attr('col'));
    console.log(rowPosition);
-   var colPosition = $(event.currentTarget).attr('col');
    console.log(colPosition);
-   if(gameBoardArray[rowPosition + down[1]][colPosition + down[0]] !== player){
+   console.log(rowPosition + down[0]);
+   console.log(colPosition + down[1]);
+   var newRowPosition = rowPosition + down[0]
+   var newColPosition = colPosition + down[1]
+   if(gameBoardArray[newRowPosition][newColPosition] !== 1){
        console.log("1st if statement");
-      while(gameBoardArray[rowPosition][colPosition] !== undefined) {
+      while(gameBoardArray[newRowPosition][newColPosition] !== undefined) {
           console.log("in while loop");
-          if(gameBoardArray[rowPosition][colPosition] === player){
-                  gameBoardArray[rowPosition][colPosition].addClass('player1square');
-                  console.log("in 2nd if statement");
+          if(gameBoardArray[newRowPosition][newColPosition] === 1){
+                //target the original position we've clicked and change that color. 
+                //target all the position we've passed through and change that color. 
+                // $('.dynamicSquare').addClass('.player1Square')
 
+                  $(event.currentTarget).addClass('player1square');
+                  console.log("in 2nd if statement");
+                  return;
           }
-          rowPosition += down[0];
-          colPosition += down[1];
+          newRowPosition += down[0];
+          newColPosition += down[1];
       }
    }
 }
@@ -114,11 +151,3 @@ function initializeStartingPieces() {
     $("[row='4'][col='3']").addClass('player1Square');
 }
 
-   var gameBoardArray =[[0,0,0,0,0,0,0,0],
-                        [0,0,0,0,0,0,0,0],
-                        [0,0,0,0,0,0,0,0],
-                        [0,0,0,2,1,0,0,0],
-                        [0,0,0,1,2,0,0,0],
-                        [0,0,0,0,0,0,0,0],
-                        [0,0,0,0,0,0,0,0],
-                        [0,0,0,0,0,0,0,0]];
