@@ -91,7 +91,7 @@ function displayCurrentPlayer(gameRound) {
     }
 }
 
-function determineWiner(){
+function determineWinner(){
 
 }
 
