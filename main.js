@@ -24,6 +24,9 @@ var gameBoardArray =[[0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0]];
 
+var blackCount=0; 
+var whiteCount=0;   
+
 // // if encounters 0 = green, if 1 = black, if 2 = white; 
 // function buildGame(){
 //     var gameBoardSquares = $('.gameBoardSquares')
@@ -88,26 +91,36 @@ function init(){
 
     // initializeStartingPieces();
     displayCurrentPlayer(gameRound);
-    checkWhiteOrBlack();
+    $('.dynamicSquare').on('click', checkWhiteOrBlack); 
+    // checkWhiteOrBlack();
     // displayCurrentPlayer(gameRound);
 }
 function checkWhiteOrBlack(){
-    for(var t = 0; t < boardSize.rows; t++){
-        for(var z = 0;  z< boardSize.col; z++){
-            if(gameBoardArray[t][z] === 1){
-                //black
-                black.push([t,z]);
-                blackCount++;
+    // for(var t = 0; t < boardSize.rows; t++){
+    //     for(var z = 0;  z< boardSize.col; z++){
+    //         if(gameBoardArray[t][z] === 1){
+    //             //black
+    //             black.push([t,z]);
+    //             blackCount++;
 
-            }
-            else if(gameBoardArray[t][z] === 2){
-                //white
-                white.push([t,z]);
-                whiteCount++;
-            }
-        }
+    //         }
+    //         else if(gameBoardArray[t][z] === 2){
+    //             //white
+    //             white.push([t,z]);
+    //             whiteCount++;
+    //         }
+    //     }
+    // }
+    // console.log(black, white);
+
+    if(gameRound===1){
+        blackCount++;
+    }else{
+        whiteCount++;
     }
-    console.log(black, white);
+
+
+
 }
 
 function player1(){
