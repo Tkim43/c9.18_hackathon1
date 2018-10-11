@@ -63,7 +63,6 @@ function init(){
     buildGame();
     $('.dynamicSquare').on('click', checkMoveIfValid);
     $('.dynamicSquare').on('click', playSound); 
-    initializeStartingPieces();
     displayCurrentPlayer(gameRound); 
     $('.dynamicSquare').on('click', checkWhiteOrBlack); 
 }
