@@ -5,7 +5,7 @@ $(document).ready(init);
 //All global variables go down here:
 var moveIsValid = false; 
 var gameRound = 1;
-var storePosition = []; 
+var storePosition = [];   
 
 var vectorArray = [[-1,-1],[1,1],[-1,0],[0,-1],[-1,1],[1,0],[0,1],[1,-1]];
 
@@ -77,6 +77,7 @@ var gameBoardArray =[[0,0,0,0,0,0,0,0],
 function init(){
     buildGameBoard();
     $('.dynamicSquare').on('click', checkMoveIfValid);
+    $('.dynamicSquare').on('click', playSound); 
     initializeStartingPieces();
     displayCurrentPlayer(gameRound); 
 }
@@ -131,7 +132,7 @@ function determineWiner(){
 
 }
 
-function startGameBoard(){
+function startGameBoard(){}
 function checkDown() {
 
 }
@@ -357,4 +358,10 @@ function initializeStartingPieces() {
     $("[row='4'][col='4']").addClass('player2Square');
     $("[row='3'][col='4']").addClass('player1Square');
     $("[row='4'][col='3']").addClass('player1Square');
+}
+
+function playSound(){
+    var player=new Audio()
+    player.src="http://www.mit.edu/afs/athena/project/windowmgr/share/Enlightenment/config/snd/Bubbles.wav"
+    player.play()
 }
