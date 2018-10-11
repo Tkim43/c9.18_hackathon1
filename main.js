@@ -85,7 +85,7 @@ function init(){
 function player1(){
     //check all valid moves for player 1, place game piece.
     //Change game round
-    console.log('player 1: ', moveIsValid)
+    console.log('player 1: ', moveIsValid);
     if (moveIsValid === true) {
         gameRound = 2; 
         displayCurrentPlayer(gameRound);
@@ -95,7 +95,7 @@ function player1(){
 }
 
 function player2(){
-    console.log('player 2: ', moveIsValid)
+    console.log('player 2: ', moveIsValid);
     if (moveIsValid === true) {
         gameRound = 1; 
         displayCurrentPlayer(gameRound);
@@ -120,7 +120,8 @@ function displayCurrentPlayer(gameRound) {
     }
     else {
         //highlight the player 2's position
-
+        $('.playerBorder2').addClass('highlightCP')
+        console.log('is second if statement getting hit?', gameRound);
         $('.playerBorder2').addClass('highlightCP')
         $('.playerBorder1').removeClass('highlightCP');
     }
@@ -133,7 +134,6 @@ function determineWiner(){
 function startGameBoard(){
 function checkDown() {
 
-}
 }
 function checkMoveIfValid(){
     var down = [1,0];
@@ -351,6 +351,7 @@ function buildGameBoard(){
     }
 
 }
+
 function initializeStartingPieces() {
     $("[row='3'][col='3']").addClass('player2Square');
     $("[row='4'][col='4']").addClass('player2Square');
