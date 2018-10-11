@@ -3,8 +3,7 @@ $(document).ready(init);
 
 
 //All global variables go down here:
-var player1 = 1;
-var player2 = 2;
+var moveIsValid = false; 
 var gameRound = 1;
 
 var vectorArray = [[-1,-1],[1,1],[-1,0],[0,-1],[-1,1],[1,0],[0,1],[1,-1]];
@@ -45,18 +44,30 @@ function init(){
     buildGameBoard();
     $('.dynamicSquare').on('click', checkMoveIfValid);
     initializeStartingPieces();
-    displayCurrentPlayer(gameRound)
+    displayCurrentPlayer(gameRound); 
 }
+
 
 function player1(){
     //check all valid moves for player 1, place game piece.
-    //call display data to flip all game pieces according to player 1's pieces
     //Change game round
-    gameRound = 2;
+    console.log('player 1: ', moveIsValid)
+    if (moveIsValid === true) {
+        gameRound = 2; 
+        displayCurrentPlayer(gameRound);
+        moveIsValid = false;
+    }
+    console.log('Game Round: ', gameRound);
 }
 
 function player2(){
-    gameRound = 1;
+    console.log('player 2: ', moveIsValid)
+    if (moveIsValid === true) {
+        gameRound = 1; 
+        displayCurrentPlayer(gameRound);
+        moveIsValid = false;
+    }
+    console.log('Game Round: ', gameRound);
 }
 
 // player = $(player1Square) or $(player2Square)
@@ -64,19 +75,20 @@ function displayData(player){
     $(event.currentTarget).addClass(player);
 }
 
-
+//Display who the current player is based on the game round and allow click. 
 function displayCurrentPlayer(gameRound) {
     console.log('is this being hit?');
     if (gameRound === 1) {
         //highlight the player 1's position
-        console.log('is first if statement getting hit?');
-        $('.playerBorder1').addClass('highlightCP')
-
+        console.log('is first if statement getting hit?', gameRound);
+        $('.playerBorder1').addClass('highlightCP');
+        $('.playerBorder2').removeClass('highlightCP');
     }
     else {
         //highlight the player 2's position
-        console.log('is second if statement getting hit?');
+        console.log('is second if statement getting hit?', gameRound);
         $('.playerBorder2').addClass('highlightCP')
+        $('.playerBorder1').removeClass('highlightCP');
     }
 }
 
@@ -105,8 +117,17 @@ function checkMoveIfValid(){
         while(gameBoardArray[rowPosition][colPosition] !== undefined && gameBoardArray[rowPosition] !== undefined) {
             console.log("in while loop");
             if(gameBoardArray[rowPosition][colPosition] === gameRound){
-                $(event.currentTarget).addClass('player1Square');
                 console.log("in 2nd if statement");
+                if (gameRound === 1 ) {
+                    $(event.currentTarget).addClass('player1Square');
+                    moveIsValid = true;
+                    player1();
+                }
+                else {
+                    $(event.currentTarget).addClass('player2Square');
+                    moveIsValid = true;
+                    player2();
+                }
                 return;
 
             }
@@ -122,6 +143,16 @@ function checkMoveIfValid(){
             if(gameBoardArray[rowPosition][colPosition] === gameRound){
                 $(event.currentTarget).addClass('player1Square');
                 console.log("in 2nd if statement");
+                if (gameRound === 1 ) {
+                    $(event.currentTarget).addClass('player1Square');
+                    moveIsValid = true;
+                    player1();
+                }
+                else {
+                    $(event.currentTarget).addClass('player2Square');
+                    moveIsValid = true;
+                    player2();
+                }
                 return;
 
             }
@@ -136,6 +167,16 @@ function checkMoveIfValid(){
             if(gameBoardArray[rowPosition][colPosition] === gameRound){
                 $(event.currentTarget).addClass('player1Square');
                 console.log("in 2nd if statement");
+                if (gameRound === 1 ) {
+                    $(event.currentTarget).addClass('player1Square');
+                    moveIsValid = true;
+                    player1();
+                }
+                else {
+                    $(event.currentTarget).addClass('player2Square');
+                    moveIsValid = true;
+                    player2();
+                }
                 return;
 
             }
@@ -151,6 +192,16 @@ function checkMoveIfValid(){
             if(gameBoardArray[rowPosition][colPosition] === gameRound){
                 $(event.currentTarget).addClass('player1Square');
                 console.log("in 2nd if statement");
+                if (gameRound === 1 ) {
+                    $(event.currentTarget).addClass('player1Square');
+                    moveIsValid = true;
+                    player1();
+                }
+                else {
+                    $(event.currentTarget).addClass('player2Square');
+                    moveIsValid = true;
+                    player2();
+                }
                 return;
 
             }
@@ -166,6 +217,16 @@ function checkMoveIfValid(){
             if(gameBoardArray[rowPosition][colPosition] === gameRound){
                 $(event.currentTarget).addClass('player1Square');
                 console.log("in 2nd if statement");
+                if (gameRound === 1 ) {
+                    $(event.currentTarget).addClass('player1Square');
+                    moveIsValid = true;
+                    player1();
+                }
+                else {
+                    $(event.currentTarget).addClass('player2Square');
+                    moveIsValid = true;
+                    player2();
+                }
                 return;
 
             }
@@ -181,6 +242,16 @@ function checkMoveIfValid(){
             if(gameBoardArray[rowPosition][colPosition] === gameRound){
                 $(event.currentTarget).addClass('player1Square');
                 console.log("in 2nd if statement");
+                if (gameRound === 1 ) {
+                    $(event.currentTarget).addClass('player1Square');
+                    moveIsValid = true;
+                    player1();
+                }
+                else {
+                    $(event.currentTarget).addClass('player2Square');
+                    moveIsValid = true;
+                    player2();
+                }
                 return;
 
             }
@@ -196,6 +267,16 @@ function checkMoveIfValid(){
             if(gameBoardArray[rowPosition][colPosition] === gameRound){
                 $(event.currentTarget).addClass('player1Square');
                 console.log("in 2nd if statement");
+                if (gameRound === 1 ) {
+                    $(event.currentTarget).addClass('player1Square');
+                    moveIsValid = true;
+                    player1();
+                }
+                else {
+                    $(event.currentTarget).addClass('player2Square');
+                    moveIsValid = true;
+                    player2();
+                }
                 return;
 
             }
