@@ -62,7 +62,7 @@ function displayCurrentPlayer(gameRound) {
     }
 }
 
-function determineWiner(){
+function determineWinner(){
 
 }
 
@@ -71,24 +71,33 @@ function startGameBoard(){
 }
 
 function checkMoveIfValid(player){
-   var down = [1,0];
-   var rowPosition = $(event.currentTarget).attr('row');
-   console.log(rowPosition);
-   var colPosition = $(event.currentTarget).attr('col');
-   console.log(colPosition);
-   if(gameBoardArray[rowPosition + down[1]][colPosition + down[0]] !== player){
-       console.log("1st if statement");
-      while(gameBoardArray[rowPosition][colPosition] !== undefined) {
-          console.log("in while loop");
-          if(gameBoardArray[rowPosition][colPosition] === player){
-                  gameBoardArray[rowPosition][colPosition].addClass('player1square');
-                  console.log("in 2nd if statement");
-
-          }
-          rowPosition += down[0];
-          colPosition += down[1];
-      }
-   }
+    var down = [1,0];
+    var up = [-1,0];
+    var left = [0,-1];
+    var upRight = [-1,1];
+    var downRight = [1,1];
+    var right = [0,1];
+    var downLeft = [1,-1];
+    var rowPosition = $(event.currentTarget).attr('row');
+    var colPosition = $(event.currentTarget).attr('col');
+    colPosition = parseInt(colPosition);
+    rowPosition = parseInt(rowPosition);
+    if(gameBoardArray[rowPosition + down[0]][colPosition + down[1]] !== gameRound && gameBoardArray[rowPosition] !== undefined){
+        console.log("1st if statement");
+       while(gameBoardArray[parseInt(rowPosition)][parseInt(colPosition)] !== undefined && gameBoardArray[parseInt(rowPosition)] !== undefined) {
+           console.log("in while loop");
+           if(gameBoardArray[parseInt(rowPosition)][parseInt(colPosition)] === gameRound){
+    
+                 console.log([rowPosition][colPosition]);
+                   $([rowPosition][colPosition]).addClass('player1Square');
+                   console.log("in 2nd if statement");
+                   return;
+ 
+           }
+           rowPosition += down[0];
+           colPosition += down[1];
+       }
+    }
 }
 
 function buildGameBoard(){
