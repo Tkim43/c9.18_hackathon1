@@ -45,7 +45,8 @@ function init(){
     buildGameBoard();
     $('.dynamicSquare').on('click', checkMoveIfValid);
     initializeStartingPieces();
-    displayCurrentPlayer(gameRound)
+    displayCurrentPlayer(gameRound);
+    checkMoveIfClicked();
 }
 
 function player1(){
@@ -87,7 +88,6 @@ function determineWiner(){
 function startGameBoard(){
 
 }
-
 function checkMoveIfValid(){
     var down = [1,0];
     var up = [-1,0];
@@ -100,9 +100,12 @@ function checkMoveIfValid(){
     var colPosition = $(event.currentTarget).attr('col');
     colPosition = parseInt(colPosition);
     rowPosition = parseInt(rowPosition);
-    if(gameBoardArray[rowPosition + down[0]][colPosition + down[1]] !== gameRound && gameBoardArray[rowPosition] !== undefined){
+    if(checkMoveIfClicked() === true){
+        return;
+    }
+    if(gameBoardArray[rowPosition + down[0]][colPosition + down[1]] !== gameRound){
         console.log("1st if statement");
-        while(gameBoardArray[rowPosition][colPosition] !== undefined && gameBoardArray[rowPosition] !== undefined) {
+        while(gameBoardArray[rowPosition][colPosition] !== undefined) {
             console.log("in while loop");
             if(gameBoardArray[rowPosition][colPosition] === gameRound){
                 $(event.currentTarget).addClass('player1Square');
@@ -148,7 +151,7 @@ function checkMoveIfValid(){
         console.log("1st if statement");
         while(gameBoardArray[rowPosition][colPosition] !== undefined) {
             console.log("in while loop");
-            if(gameBoardArray[rowPosition][colPosition] === gameRound){
+            if(gameBoardArray[rowPosition + upRight[0]][colPosition + upRight[1]] === gameRound){
                 $(event.currentTarget).addClass('player1Square');
                 console.log("in 2nd if statement");
                 return;
@@ -182,7 +185,6 @@ function checkMoveIfValid(){
                 $(event.currentTarget).addClass('player1Square');
                 console.log("in 2nd if statement");
                 return;
-
             }
             rowPosition += right[0];
             colPosition += right[1];
@@ -206,6 +208,11 @@ function checkMoveIfValid(){
 
 }
 
+function checkMoveIfClicked(){
+    if($(event.currentTarget).hasClass('player1Square') || $(event.currentTarget).hasClass('player2Square')){
+                return true;
+    }
+}
 function buildGameBoard(){
     var boardSize = { rows: 8, squares: 8 };
     var gameBoard = $('.gameBoardSquares');
