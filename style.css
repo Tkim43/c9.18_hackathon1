@@ -269,7 +269,7 @@ body{
     vertical-align: top;
 
     /* background-image:linear-gradient(#d5f4e6,#ffef96); */
-    margin-left:3.5%;
+    margin-left:4%;
 }
 .playerBorder1, .playerBorder2 {
     width: 40%;
@@ -281,11 +281,41 @@ body{
     width: 100%;
     height: 100%; 
     text-align: center;
+    font-size: 3vh;
 }
 .highlightCP {
     border: solid salmon; 
     border-radius: 50%;
 }
+
+@keyframes flickerAnimation {
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+  }
+  @-o-keyframes flickerAnimation{
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+  }
+  @-moz-keyframes flickerAnimation{
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+  }
+  @-webkit-keyframes flickerAnimation{
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+  }
+  .highlightCP  {
+     -webkit-animation: flickerAnimation 2.5s infinite;
+     -moz-animation: flickerAnimation 2.5s infinite;
+     -o-animation: flickerAnimation 2.5s infinite;
+      animation: flickerAnimation 2.5s infinite;
+  }
+
+
 
 .gameBoardSquares{
     width: 60%;
@@ -318,7 +348,7 @@ body{
     /* background-color:black; */
     border-radius: 50%;
 
-    background-image: linear-gradient(black,black,grey );
+    background-image: linear-gradient(black,#282828,gray );
     
 
 }
