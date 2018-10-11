@@ -5,12 +5,14 @@ $(document).ready(init);
 //All global variables go down here:
 var moveIsValid = false;
 var gameRound = 1;
+
 var storePosition = [];
 var black = [];
 var white = [];
 var blackCount = 0;
 var whiteCount = 0;
 var boardSize = { rows: 8, squares: 8 };
+
 var vectorArray = [[-1,-1],[1,1],[-1,0],[0,-1],[-1,1],[1,0],[0,1],[1,-1]];
 
 var gameBoardArray =[[0,0,0,0,0,0,0,0],
@@ -80,6 +82,9 @@ function init(){
     // buildGameBoard();
     buildGame();
     $('.dynamicSquare').on('click', checkMoveIfValid);
+    $('.dynamicSquare').on('click', playSound); 
+    initializeStartingPieces();
+    displayCurrentPlayer(gameRound); 
 
     // initializeStartingPieces();
     displayCurrentPlayer(gameRound);
@@ -150,8 +155,10 @@ function determineWiner(){
 }
 
 
+
 function startGameBoard() {
 }
+
 function checkDown() {
 
 }
@@ -530,3 +537,34 @@ function checkMoveIfClicked(){
                 return true;
     }
 }
+
+function buildGameBoard(){
+    var boardSize = { rows: 8, squares: 8 };
+    var gameBoard = $('.gameBoardSquares');
+
+    for(var rows=0; rows < boardSize.rows; rows++){
+        var outerLoop = $("<div>").addClass("row");
+        gameBoard.append(outerLoop);
+        for(var col =0 ;col <boardSize.squares; col++){
+            var square = $("<div>").addClass("dynamicSquare");
+            outerLoop.append(square);
+            square.attr("col", col);
+            square.attr("row", rows);
+        }
+    }
+
+}
+
+function initializeStartingPieces() {
+    $("[row='3'][col='3']").addClass('player2Square');
+    $("[row='4'][col='4']").addClass('player2Square');
+    $("[row='3'][col='4']").addClass('player1Square');
+    $("[row='4'][col='3']").addClass('player1Square');
+}
+
+function playSound(){
+    var player=new Audio()
+    player.src="http://www.mit.edu/afs/athena/project/windowmgr/share/Enlightenment/config/snd/Bubbles.wav"
+    player.play()
+}
+
