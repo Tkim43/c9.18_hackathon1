@@ -283,6 +283,14 @@ body{
     text-align: center;
     font-size: 3vh;
 }
+
+#blackCount, #whiteCount{
+font-size:3vh;
+/* text-align:center; */
+position: relative;
+left:17%;
+}
+
 .highlightCP {
     border: solid salmon; 
     border-radius: 50%;
