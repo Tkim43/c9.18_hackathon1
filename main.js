@@ -36,21 +36,36 @@ function buildGame(){
         for (var col = 0; col < gameBoardArray.length; col++) {
             if (gameBoardArray[rows][col] === 0) {
                 var newDiv = $('<div>').addClass('dynamicSquare')
+                // var new2Div = $('<div>').addClass('gamePieceDiv')
                 newDiv.attr("row", rows);
                 newDiv.attr("col", col);
                 outerLoop.append(newDiv)
+
+                // new2Div.attr("row", rows);
+                // new2Div.attr("col", col);
+                // outerLoop.append(new2Div)
             }
             else if (gameBoardArray[rows][col] === 1){
                 var newDiv1 = $('<div>').addClass('dynamicSquare player1Square')
+                // var new2Div = $('<div>').addClass('gamePieceDiv')
                 newDiv1.attr("row", rows);
                 newDiv1.attr("col", col);
-                outerLoop.append(newDiv1)
+                outerLoop.append(newDiv1);
+
+                // new2Div.attr("row", rows);
+                // new2Div.attr("col", col);
+                // outerLoop.append(new2Div);
             }
             else {
                 var newDiv2 = $('<div>').addClass('dynamicSquare player2Square')
+                // var new2Div1 = $('<div>').addClass('gamePieceDiv')
                 newDiv2.attr("row", rows);
                 newDiv2.attr("col", col);
                 outerLoop.append(newDiv2)
+
+                // new2Div1.attr("row", rows);
+                // new2Div1.attr("col", col);
+                // outerLoop.append(new2Div1);
             }
         }
     } 
@@ -65,6 +80,7 @@ function init(){
     $('.dynamicSquare').on('click', playSound); 
     displayCurrentPlayer(gameRound); 
     $('.dynamicSquare').on('click', checkWhiteOrBlack); 
+    
 }
 function checkWhiteOrBlack(){
     for(var t = 0; t < boardSize.rows; t++){
@@ -80,6 +96,8 @@ function checkWhiteOrBlack(){
             // display here 
             $('#blackCount').text(blackCount);
             $('#whiteCount').text(whiteCount);
+            
+            determineWinner();
         }
     }
     blackCount = 0;
@@ -126,7 +144,25 @@ function displayCurrentPlayer(gameRound) {
     }
 }
 
-function determineWiner(){
+function determineWinner(){
+    if (blackCount+whiteCount===10){
+        if(blackCount>whiteCount){
+            console.log("black is the winner");
+            $("#blackModal").modal("show");
+            return
+
+        }else if(whiteCount>blackCount){
+            console.log("white is the winner");
+            $("#whiteModal").modal("show");
+            return
+
+        }else if(whiteCount===blackCount){
+            console.log("it's a tie");
+            $("#tieModal").modal("show");
+            return
+
+        }
+    }
 
 }
 
@@ -138,6 +174,7 @@ function startGameBoard() {
 function checkDown() {
 
 }
+
 function checkMoveIfValid() {
     var down = [1, 0];
     var up = [-1, 0];
@@ -476,15 +513,16 @@ function checkMoveIfValid() {
                         // init();
                 }
             }
-            
-        }
-    $('.gameBoardSquares').empty();
-    init();
-    moveIsValid = true;
-    player2();
-    }
 
-}
+            
+//         }
+//     $('.gameBoardSquares').empty();
+//     init();
+//     moveIsValid = true;
+//     player2();
+//     }
+
+// }
 
 function checkMoveIfClicked(){
     if($(event.currentTarget).hasClass('player1Square') || $(event.currentTarget).hasClass('player2Square')){
