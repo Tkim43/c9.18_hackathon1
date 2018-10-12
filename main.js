@@ -36,21 +36,36 @@ function buildGame(){
         for (var col = 0; col < gameBoardArray.length; col++) {
             if (gameBoardArray[rows][col] === 0) {
                 var newDiv = $('<div>').addClass('dynamicSquare')
+                // var new2Div = $('<div>').addClass('gamePieceDiv')
                 newDiv.attr("row", rows);
                 newDiv.attr("col", col);
                 outerLoop.append(newDiv)
+
+                // new2Div.attr("row", rows);
+                // new2Div.attr("col", col);
+                // outerLoop.append(new2Div)
             }
             else if (gameBoardArray[rows][col] === 1){
                 var newDiv1 = $('<div>').addClass('dynamicSquare player1Square')
+                // var new2Div = $('<div>').addClass('gamePieceDiv')
                 newDiv1.attr("row", rows);
                 newDiv1.attr("col", col);
-                outerLoop.append(newDiv1)
+                outerLoop.append(newDiv1);
+
+                // new2Div.attr("row", rows);
+                // new2Div.attr("col", col);
+                // outerLoop.append(new2Div);
             }
             else {
                 var newDiv2 = $('<div>').addClass('dynamicSquare player2Square')
+                // var new2Div1 = $('<div>').addClass('gamePieceDiv')
                 newDiv2.attr("row", rows);
                 newDiv2.attr("col", col);
                 outerLoop.append(newDiv2)
+
+                // new2Div1.attr("row", rows);
+                // new2Div1.attr("col", col);
+                // outerLoop.append(new2Div1);
             }
         }
     } 
@@ -81,6 +96,7 @@ function checkWhiteOrBlack(){
             // display here 
             $('#blackCount').text(blackCount);
             $('#whiteCount').text(whiteCount);
+            
             determineWinner();
         }
     }
@@ -129,7 +145,7 @@ function displayCurrentPlayer(gameRound) {
 }
 
 function determineWinner(){
-    if (blackCount+whiteCount===5){
+    if (blackCount+whiteCount===10){
         if(blackCount>whiteCount){
             console.log("black is the winner");
             $("#blackModal").modal("show");
@@ -158,347 +174,347 @@ function startGameBoard() {
 function checkDown() {
 
 }
-function checkMoveIfValid() {
-    var down = [1, 0];
-    var up = [-1, 0];
-    var upLeft = [-1, -1];
-    var left = [0, -1];
-    var upRight = [-1, 1];
-    var downRight = [1, 1];
-    var right = [0, 1];
-    var downLeft = [1, -1];
-    var rowPosition = $(event.currentTarget).attr('row');
-    var colPosition = $(event.currentTarget).attr('col');
-    var colPositionNew = parseInt(colPosition);
-    var rowPositionNew = parseInt(rowPosition);
-    console.log('current position: ', rowPositionNew, colPositionNew);
+// function checkMoveIfValid() {
+//     var down = [1, 0];
+//     var up = [-1, 0];
+//     var upLeft = [-1, -1];
+//     var left = [0, -1];
+//     var upRight = [-1, 1];
+//     var downRight = [1, 1];
+//     var right = [0, 1];
+//     var downLeft = [1, -1];
+//     var rowPosition = $(event.currentTarget).attr('row');
+//     var colPosition = $(event.currentTarget).attr('col');
+//     var colPositionNew = parseInt(colPosition);
+//     var rowPositionNew = parseInt(rowPosition);
+//     console.log('current position: ', rowPositionNew, colPositionNew);
 
-    // if its a previous clicked position don't let them click
-    if (gameBoardArray[rowPositionNew][colPositionNew] === 1 || gameBoardArray[rowPositionNew][colPositionNew] === 2) {
-        return;
-    }
-    // if its player 1
-    if (gameRound === 1) {
-        // if its empty and not undefined
-        if (gameBoardArray[rowPositionNew][colPositionNew] === 0 && gameBoardArray[rowPositionNew][colPositionNew] !== undefined) {
-            // if its the positions down and not equal to undefined. 
+//     // if its a previous clicked position don't let them click
+//     if (gameBoardArray[rowPositionNew][colPositionNew] === 1 || gameBoardArray[rowPositionNew][colPositionNew] === 2) {
+//         return;
+//     }
+//     // if its player 1
+//     if (gameRound === 1) {
+//         // if its empty and not undefined
+//         if (gameBoardArray[rowPositionNew][colPositionNew] === 0 && gameBoardArray[rowPositionNew][colPositionNew] !== undefined) {
+//             // if its the positions down and not equal to undefined. 
 
-            if (gameBoardArray[rowPositionNew + down[0]][colPositionNew + down[1]] === 2) {
-                console.log("I found the opp color");
-                while(gameBoardArray[rowPositionNew + down[0]][colPositionNew + down[1]] === 2){
-                    console.log('is it in the while loop?')
-                    //while the new position is at the opp color, keep going in that direction
-                    console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                    rowPositionNew += down[0];
-                    colPositionNew += down[1];
-                    console.log(gameBoardArray);
-                    // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
-                        console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                        // $(event.currentTarget).addClass('player1Square');
-                        console.log(gameBoardArray);
-                        // $('.gameBoardSquares').empty();
-                        // init();
-                    }
-                }
-            }
-            if(gameBoardArray[rowPositionNew + up[0]][colPositionNew + up[1]] === 2) {
-                while(gameBoardArray[rowPositionNew + up[0]][colPositionNew + up[1]] === 2){
-                    console.log('is it in the while loop?')
-                    //while the new position is at the opp color, keep going in that direction
-                    console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                    rowPositionNew += up[0];
-                    colPositionNew += up[1];
-                    console.log(gameBoardArray);
-                    // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
-                        console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                        // $(event.currentTarget).addClass('player1Square');
-                        console.log(gameBoardArray);
-                        // $('.gameBoardSquares').empty();
-                        // init();
-                    }
-                }
-            }
-            if(gameBoardArray[rowPositionNew + upLeft[0]][colPositionNew + upLeft[1]] ===2){
-                console.log("I found the opp color");
-                while(gameBoardArray[rowPositionNew + upLeft[0]][colPositionNew + upLeft[1]] === 2){
-                    console.log('is it in the while loop?')
-                    //while the new position is at the opp color, keep going in that direction
-                    console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                    rowPositionNew += upLeft[0];
-                    colPositionNew += upLeft[1];
-                    console.log(gameBoardArray);
-                    // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
-                        console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                        // $(event.currentTarget).addClass('player1Square');
-                        console.log(gameBoardArray);
-                        // $('.gameBoardSquares').empty();
-                        // init();
-                    }
-                }
-            }
-            if(gameBoardArray[rowPositionNew + upRight[0]][colPositionNew + upRight[1]]===2){
-                console.log("I found the opp color");
-                while(gameBoardArray[rowPositionNew + upRight[0]][colPositionNew + upRight[1]] === 2){
-                    console.log('is it in the while loop?')
-                    //while the new position is at the opp color, keep going in that direction
-                    console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                    rowPositionNew += upRight[0];
-                    colPositionNew += upRight[1];
-                    console.log(gameBoardArray);
-                    // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
-                        console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                        // $(event.currentTarget).addClass('player1Square');
-                        console.log(gameBoardArray);
-                        // $('.gameBoardSquares').empty();
-                        // init();
-                    }
-                }
-            }
-            if(gameBoardArray[rowPositionNew + left[0]][colPositionNew + left[1]] === 2){
-                console.log("I found the opp color");
-                while(gameBoardArray[rowPositionNew + left[0]][colPositionNew + left[1]] === 2){
-                    console.log('is it in the while loop?')
-                    //while the new position is at the opp color, keep going in that direction
-                    console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                    rowPositionNew += left[0];
-                    colPositionNew += left[1];
-                    console.log(gameBoardArray);
-                    // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
-                        console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                        // $(event.currentTarget).addClass('player1Square');
-                        console.log(gameBoardArray);
-                        // $('.gameBoardSquares').empty();
-                        // init();
-                    }
-                }
-            }
-            if(gameBoardArray[rowPositionNew + downRight[0]][colPositionNew + downRight[1]] ===2){
-                console.log("I found the opp color");
-                while(gameBoardArray[rowPositionNew + downRight[0]][colPositionNew + downRight[1]] === 2){
-                    console.log('is it in the while loop?')
-                    //while the new position is at the opp color, keep going in that direction
-                    console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                    rowPositionNew += downRight[0];
-                    colPositionNew += downRight[1];
-                    console.log(gameBoardArray);
-                    // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
-                        console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                        // $(event.currentTarget).addClass('player1Square');
-                        console.log(gameBoardArray);
-                        $('.gameBoardSquares').empty();
-                        init();
-                    }
-                }
-            }
-            if(gameBoardArray[rowPositionNew + right[0]][colPositionNew + right[1]] === 2){
-                console.log("I found the opp color");
-                while(gameBoardArray[rowPositionNew + right[0]][colPositionNew + right[1]] === 2){
-                    console.log('is it in the while loop?')
-                    //while the new position is at the opp color, keep going in that direction
-                    console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                    rowPositionNew += right[0];
-                    colPositionNew += right[1];
-                    console.log(gameBoardArray);
-                    // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
-                        console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                        // $(event.currentTarget).addClass('player1Square');
-                        console.log(gameBoardArray);
-                        // $('.gameBoardSquares').empty();
-                        // init();
-                    }
-                }
-            }
-            if(gameBoardArray[rowPositionNew + downLeft[0]][colPositionNew + downLeft[1]] === 2){
-                console.log("I found the opp color");
-                while(gameBoardArray[rowPositionNew + downLeft[0]][colPositionNew + downLeft[1]] === 2){
-                    console.log('is it in the while loop?')
-                    //while the new position is at the opp color, keep going in that direction
-                    console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                    rowPositionNew += downLeft[0];
-                    colPositionNew += downLeft[1];
-                    console.log(gameBoardArray);
-                    // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
-                        console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                        // $(event.currentTarget).addClass('player1Square');
-                        console.log(gameBoardArray);
-                        // $('.gameBoardSquares').empty();
-                        // init();
-                    }
-                }
-            }
-        }
-        $('.gameBoardSquares').empty();
-        init();
-        moveIsValid = true;
-        player1();
-    }
-    // if its player 2
-    else if (gameRound === 2) {
-        // if its empty and not undefined
-        if (gameBoardArray[rowPositionNew][colPositionNew] === 0 && gameBoardArray[rowPositionNew][colPositionNew] !== undefined) {
-            // the down position has an opp color add color to current event
-            if (gameBoardArray[rowPositionNew + down[0]][colPositionNew + down[1]] === 1) {
-                    console.log("I found the opp color");
-                while(gameBoardArray[rowPositionNew + down[0]][colPositionNew + down[1]] === 1){
-                    console.log('is it in the while loop?')
-                    //while the new position is at the opp color, keep going in that direction
-                    console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                    rowPositionNew += down[0];
-                    colPositionNew += down[1];
-                    console.log(gameBoardArray);
-                    // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
-                        console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                        // $(event.currentTarget).addClass('player1Square');
-                        console.log(gameBoardArray);
-                        // $('.gameBoardSquares').empty();
-                        // init();
-                    }
-                }
-            }
-            if(gameBoardArray[rowPositionNew + up[0]][colPositionNew + up[1]] === 1){
-                while(gameBoardArray[rowPositionNew + up[0]][colPositionNew + up[1]] === 1){
-                    console.log('is it in the while loop?')
-                    //while the new position is at the opp color, keep going in that direction
-                    console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                    rowPositionNew += up[0];
-                    colPositionNew += up[1];
-                    console.log(gameBoardArray);
-                    // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
-                        console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                        // $(event.currentTarget).addClass('player1Square');
-                        console.log(gameBoardArray);
-                        // $('.gameBoardSquares').empty();
-                        // init();
-                    }
-                }
-            }
-            if(gameBoardArray[rowPositionNew + upLeft[0]][colPositionNew + upLeft[1]] === 1){
-                while(gameBoardArray[rowPositionNew + upLeft[0]][colPositionNew + upLeft[1]] === 1){
-                    console.log('is it in the while loop?')
-                    //while the new position is at the opp color, keep going in that direction
-                    console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                    rowPositionNew += upLeft[0];
-                    colPositionNew += upLeft[1];
-                    console.log(gameBoardArray);
-                    // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
-                        console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                        // $(event.currentTarget).addClass('player1Square');
-                        console.log(gameBoardArray);
-                        // $('.gameBoardSquares').empty();
-                        // init();
-                    }
-                }
-            }
-            if(gameBoardArray[rowPositionNew + upRight[0]][colPositionNew + upRight[1]] ===1){
-                while(gameBoardArray[rowPositionNew + upRight[0]][colPositionNew + upRight[1]] === 1){
-                    console.log('is it in the while loop?')
-                    //while the new position is at the opp color, keep going in that direction
-                    console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                    rowPositionNew += upRight[0];
-                    colPositionNew += upRight[1];
-                    console.log(gameBoardArray);
-                    // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
-                        console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                        // $(event.currentTarget).addClass('player1Square');
-                        console.log(gameBoardArray);
-                        // $('.gameBoardSquares').empty();
-                        // init();
-                    }
-                }
-            }
-            if(gameBoardArray[rowPositionNew + left[0]][colPositionNew + left[1]]===1){
-                while(gameBoardArray[rowPositionNew + left[0]][colPositionNew + left[1]] === 1){
-                    console.log('is it in the while loop?')
-                    //while the new position is at the opp color, keep going in that direction
-                    console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                    rowPositionNew += left[0];
-                    colPositionNew += left[1];
-                    console.log(gameBoardArray);
-                    // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
-                        console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                        // $(event.currentTarget).addClass('player1Square');
-                        console.log(gameBoardArray);
-                        // $('.gameBoardSquares').empty();
-                        // init();
-                    }
-                }
-            }
-            if(gameBoardArray[rowPositionNew + downRight[0]][colPositionNew + downRight[1]]===1){
-                while(gameBoardArray[rowPositionNew + downRight[0]][colPositionNew + downRight[1]] === 1){
-                    console.log('is it in the while loop?')
-                    //while the new position is at the opp color, keep going in that direction
-                    console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                    rowPositionNew += downRight[0];
-                    colPositionNew += downRight[1];
-                    console.log(gameBoardArray);
-                    // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
-                        console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                        // $(event.currentTarget).addClass('player1Square');
-                        console.log(gameBoardArray);
-                        // $('.gameBoardSquares').empty();
-                        // init();
-                    }
-                }
-            }
-            if(gameBoardArray[rowPositionNew + right[0]][colPositionNew + right[1]]===1){
-                while(gameBoardArray[rowPositionNew + right[0]][colPositionNew + right[1]] === 1){
-                    console.log('is it in the while loop?')
-                    //while the new position is at the opp color, keep going in that direction
-                    console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                    rowPositionNew += right[0];
-                    colPositionNew += right[1];
-                    console.log(gameBoardArray);
-                    // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
-                        console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                        // $(event.currentTarget).addClass('player1Square');
-                        console.log(gameBoardArray);
-                        // $('.gameBoardSquares').empty();
-                        // init();
-                    }
-                }
-            }
-            if(gameBoardArray[rowPositionNew + downLeft[0]][colPositionNew + downLeft[1]]===1){
-                while(gameBoardArray[rowPositionNew + downLeft[0]][colPositionNew + downLeft[1]] === 1){
-                    console.log('is it in the while loop?')
-                    //while the new position is at the opp color, keep going in that direction
-                    console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                    rowPositionNew += downLeft[0];
-                    colPositionNew += downLeft[1];
-                    console.log(gameBoardArray);
-                    // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
-                        console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                        // $(event.currentTarget).addClass('player1Square');
-                        console.log(gameBoardArray);
-                        // $('.gameBoardSquares').empty();
-                        // init();
-                    }
-                }
-            }
+//             if (gameBoardArray[rowPositionNew + down[0]][colPositionNew + down[1]] === 2) {
+//                 console.log("I found the opp color");
+//                 while(gameBoardArray[rowPositionNew + down[0]][colPositionNew + down[1]] === 2){
+//                     console.log('is it in the while loop?')
+//                     //while the new position is at the opp color, keep going in that direction
+//                     console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                     rowPositionNew += down[0];
+//                     colPositionNew += down[1];
+//                     console.log(gameBoardArray);
+//                     // if the piece reaches a same piece the move has already been made
+//                     if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+//                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                         // $(event.currentTarget).addClass('player1Square');
+//                         console.log(gameBoardArray);
+//                         // $('.gameBoardSquares').empty();
+//                         // init();
+//                     }
+//                 }
+//             }
+//             if(gameBoardArray[rowPositionNew + up[0]][colPositionNew + up[1]] === 2) {
+//                 while(gameBoardArray[rowPositionNew + up[0]][colPositionNew + up[1]] === 2){
+//                     console.log('is it in the while loop?')
+//                     //while the new position is at the opp color, keep going in that direction
+//                     console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                     rowPositionNew += up[0];
+//                     colPositionNew += up[1];
+//                     console.log(gameBoardArray);
+//                     // if the piece reaches a same piece the move has already been made
+//                     if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+//                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                         // $(event.currentTarget).addClass('player1Square');
+//                         console.log(gameBoardArray);
+//                         // $('.gameBoardSquares').empty();
+//                         // init();
+//                     }
+//                 }
+//             }
+//             if(gameBoardArray[rowPositionNew + upLeft[0]][colPositionNew + upLeft[1]] ===2){
+//                 console.log("I found the opp color");
+//                 while(gameBoardArray[rowPositionNew + upLeft[0]][colPositionNew + upLeft[1]] === 2){
+//                     console.log('is it in the while loop?')
+//                     //while the new position is at the opp color, keep going in that direction
+//                     console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                     rowPositionNew += upLeft[0];
+//                     colPositionNew += upLeft[1];
+//                     console.log(gameBoardArray);
+//                     // if the piece reaches a same piece the move has already been made
+//                     if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+//                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                         // $(event.currentTarget).addClass('player1Square');
+//                         console.log(gameBoardArray);
+//                         // $('.gameBoardSquares').empty();
+//                         // init();
+//                     }
+//                 }
+//             }
+//             if(gameBoardArray[rowPositionNew + upRight[0]][colPositionNew + upRight[1]]===2){
+//                 console.log("I found the opp color");
+//                 while(gameBoardArray[rowPositionNew + upRight[0]][colPositionNew + upRight[1]] === 2){
+//                     console.log('is it in the while loop?')
+//                     //while the new position is at the opp color, keep going in that direction
+//                     console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                     rowPositionNew += upRight[0];
+//                     colPositionNew += upRight[1];
+//                     console.log(gameBoardArray);
+//                     // if the piece reaches a same piece the move has already been made
+//                     if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+//                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                         // $(event.currentTarget).addClass('player1Square');
+//                         console.log(gameBoardArray);
+//                         // $('.gameBoardSquares').empty();
+//                         // init();
+//                     }
+//                 }
+//             }
+//             if(gameBoardArray[rowPositionNew + left[0]][colPositionNew + left[1]] === 2){
+//                 console.log("I found the opp color");
+//                 while(gameBoardArray[rowPositionNew + left[0]][colPositionNew + left[1]] === 2){
+//                     console.log('is it in the while loop?')
+//                     //while the new position is at the opp color, keep going in that direction
+//                     console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                     rowPositionNew += left[0];
+//                     colPositionNew += left[1];
+//                     console.log(gameBoardArray);
+//                     // if the piece reaches a same piece the move has already been made
+//                     if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+//                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                         // $(event.currentTarget).addClass('player1Square');
+//                         console.log(gameBoardArray);
+//                         // $('.gameBoardSquares').empty();
+//                         // init();
+//                     }
+//                 }
+//             }
+//             if(gameBoardArray[rowPositionNew + downRight[0]][colPositionNew + downRight[1]] ===2){
+//                 console.log("I found the opp color");
+//                 while(gameBoardArray[rowPositionNew + downRight[0]][colPositionNew + downRight[1]] === 2){
+//                     console.log('is it in the while loop?')
+//                     //while the new position is at the opp color, keep going in that direction
+//                     console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                     rowPositionNew += downRight[0];
+//                     colPositionNew += downRight[1];
+//                     console.log(gameBoardArray);
+//                     // if the piece reaches a same piece the move has already been made
+//                     if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+//                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                         // $(event.currentTarget).addClass('player1Square');
+//                         console.log(gameBoardArray);
+//                         $('.gameBoardSquares').empty();
+//                         init();
+//                     }
+//                 }
+//             }
+//             if(gameBoardArray[rowPositionNew + right[0]][colPositionNew + right[1]] === 2){
+//                 console.log("I found the opp color");
+//                 while(gameBoardArray[rowPositionNew + right[0]][colPositionNew + right[1]] === 2){
+//                     console.log('is it in the while loop?')
+//                     //while the new position is at the opp color, keep going in that direction
+//                     console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                     rowPositionNew += right[0];
+//                     colPositionNew += right[1];
+//                     console.log(gameBoardArray);
+//                     // if the piece reaches a same piece the move has already been made
+//                     if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+//                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                         // $(event.currentTarget).addClass('player1Square');
+//                         console.log(gameBoardArray);
+//                         // $('.gameBoardSquares').empty();
+//                         // init();
+//                     }
+//                 }
+//             }
+//             if(gameBoardArray[rowPositionNew + downLeft[0]][colPositionNew + downLeft[1]] === 2){
+//                 console.log("I found the opp color");
+//                 while(gameBoardArray[rowPositionNew + downLeft[0]][colPositionNew + downLeft[1]] === 2){
+//                     console.log('is it in the while loop?')
+//                     //while the new position is at the opp color, keep going in that direction
+//                     console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                     rowPositionNew += downLeft[0];
+//                     colPositionNew += downLeft[1];
+//                     console.log(gameBoardArray);
+//                     // if the piece reaches a same piece the move has already been made
+//                     if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+//                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                         // $(event.currentTarget).addClass('player1Square');
+//                         console.log(gameBoardArray);
+//                         // $('.gameBoardSquares').empty();
+//                         // init();
+//                     }
+//                 }
+//             }
+//         }
+//         $('.gameBoardSquares').empty();
+//         init();
+//         moveIsValid = true;
+//         player1();
+//     }
+//     // if its player 2
+//     else if (gameRound === 2) {
+//         // if its empty and not undefined
+//         if (gameBoardArray[rowPositionNew][colPositionNew] === 0 && gameBoardArray[rowPositionNew][colPositionNew] !== undefined) {
+//             // the down position has an opp color add color to current event
+//             if (gameBoardArray[rowPositionNew + down[0]][colPositionNew + down[1]] === 1) {
+//                     console.log("I found the opp color");
+//                 while(gameBoardArray[rowPositionNew + down[0]][colPositionNew + down[1]] === 1){
+//                     console.log('is it in the while loop?')
+//                     //while the new position is at the opp color, keep going in that direction
+//                     console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                     rowPositionNew += down[0];
+//                     colPositionNew += down[1];
+//                     console.log(gameBoardArray);
+//                     // if the piece reaches a same piece the move has already been made
+//                     if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+//                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                         // $(event.currentTarget).addClass('player1Square');
+//                         console.log(gameBoardArray);
+//                         // $('.gameBoardSquares').empty();
+//                         // init();
+//                     }
+//                 }
+//             }
+//             if(gameBoardArray[rowPositionNew + up[0]][colPositionNew + up[1]] === 1){
+//                 while(gameBoardArray[rowPositionNew + up[0]][colPositionNew + up[1]] === 1){
+//                     console.log('is it in the while loop?')
+//                     //while the new position is at the opp color, keep going in that direction
+//                     console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                     rowPositionNew += up[0];
+//                     colPositionNew += up[1];
+//                     console.log(gameBoardArray);
+//                     // if the piece reaches a same piece the move has already been made
+//                     if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+//                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                         // $(event.currentTarget).addClass('player1Square');
+//                         console.log(gameBoardArray);
+//                         // $('.gameBoardSquares').empty();
+//                         // init();
+//                     }
+//                 }
+//             }
+//             if(gameBoardArray[rowPositionNew + upLeft[0]][colPositionNew + upLeft[1]] === 1){
+//                 while(gameBoardArray[rowPositionNew + upLeft[0]][colPositionNew + upLeft[1]] === 1){
+//                     console.log('is it in the while loop?')
+//                     //while the new position is at the opp color, keep going in that direction
+//                     console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                     rowPositionNew += upLeft[0];
+//                     colPositionNew += upLeft[1];
+//                     console.log(gameBoardArray);
+//                     // if the piece reaches a same piece the move has already been made
+//                     if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+//                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                         // $(event.currentTarget).addClass('player1Square');
+//                         console.log(gameBoardArray);
+//                         // $('.gameBoardSquares').empty();
+//                         // init();
+//                     }
+//                 }
+//             }
+//             if(gameBoardArray[rowPositionNew + upRight[0]][colPositionNew + upRight[1]] ===1){
+//                 while(gameBoardArray[rowPositionNew + upRight[0]][colPositionNew + upRight[1]] === 1){
+//                     console.log('is it in the while loop?')
+//                     //while the new position is at the opp color, keep going in that direction
+//                     console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                     rowPositionNew += upRight[0];
+//                     colPositionNew += upRight[1];
+//                     console.log(gameBoardArray);
+//                     // if the piece reaches a same piece the move has already been made
+//                     if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+//                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                         // $(event.currentTarget).addClass('player1Square');
+//                         console.log(gameBoardArray);
+//                         // $('.gameBoardSquares').empty();
+//                         // init();
+//                     }
+//                 }
+//             }
+//             if(gameBoardArray[rowPositionNew + left[0]][colPositionNew + left[1]]===1){
+//                 while(gameBoardArray[rowPositionNew + left[0]][colPositionNew + left[1]] === 1){
+//                     console.log('is it in the while loop?')
+//                     //while the new position is at the opp color, keep going in that direction
+//                     console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                     rowPositionNew += left[0];
+//                     colPositionNew += left[1];
+//                     console.log(gameBoardArray);
+//                     // if the piece reaches a same piece the move has already been made
+//                     if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+//                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                         // $(event.currentTarget).addClass('player1Square');
+//                         console.log(gameBoardArray);
+//                         // $('.gameBoardSquares').empty();
+//                         // init();
+//                     }
+//                 }
+//             }
+//             if(gameBoardArray[rowPositionNew + downRight[0]][colPositionNew + downRight[1]]===1){
+//                 while(gameBoardArray[rowPositionNew + downRight[0]][colPositionNew + downRight[1]] === 1){
+//                     console.log('is it in the while loop?')
+//                     //while the new position is at the opp color, keep going in that direction
+//                     console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                     rowPositionNew += downRight[0];
+//                     colPositionNew += downRight[1];
+//                     console.log(gameBoardArray);
+//                     // if the piece reaches a same piece the move has already been made
+//                     if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+//                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                         // $(event.currentTarget).addClass('player1Square');
+//                         console.log(gameBoardArray);
+//                         // $('.gameBoardSquares').empty();
+//                         // init();
+//                     }
+//                 }
+//             }
+//             if(gameBoardArray[rowPositionNew + right[0]][colPositionNew + right[1]]===1){
+//                 while(gameBoardArray[rowPositionNew + right[0]][colPositionNew + right[1]] === 1){
+//                     console.log('is it in the while loop?')
+//                     //while the new position is at the opp color, keep going in that direction
+//                     console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                     rowPositionNew += right[0];
+//                     colPositionNew += right[1];
+//                     console.log(gameBoardArray);
+//                     // if the piece reaches a same piece the move has already been made
+//                     if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+//                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                         // $(event.currentTarget).addClass('player1Square');
+//                         console.log(gameBoardArray);
+//                         // $('.gameBoardSquares').empty();
+//                         // init();
+//                     }
+//                 }
+//             }
+//             if(gameBoardArray[rowPositionNew + downLeft[0]][colPositionNew + downLeft[1]]===1){
+//                 while(gameBoardArray[rowPositionNew + downLeft[0]][colPositionNew + downLeft[1]] === 1){
+//                     console.log('is it in the while loop?')
+//                     //while the new position is at the opp color, keep going in that direction
+//                     console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                     rowPositionNew += downLeft[0];
+//                     colPositionNew += downLeft[1];
+//                     console.log(gameBoardArray);
+//                     // if the piece reaches a same piece the move has already been made
+//                     if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+//                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+//                         // $(event.currentTarget).addClass('player1Square');
+//                         console.log(gameBoardArray);
+//                         // $('.gameBoardSquares').empty();
+//                         // init();
+//                     }
+//                 }
+//             }
             
-        }
-    $('.gameBoardSquares').empty();
-    init();
-    moveIsValid = true;
-    player2();
-    }
+//         }
+//     $('.gameBoardSquares').empty();
+//     init();
+//     moveIsValid = true;
+//     player2();
+//     }
 
-}
+// }
 
 function checkMoveIfClicked(){
     if($(event.currentTarget).hasClass('player1Square') || $(event.currentTarget).hasClass('player2Square')){
