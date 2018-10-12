@@ -272,8 +272,8 @@ function checkMoveIfValid() {
                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
                         // $(event.currentTarget).addClass('player1Square');
                         console.log(gameBoardArray);
-                        $('.gameBoardSquares').empty();
-                        init();
+                        // $('.gameBoardSquares').empty();
+                        // init();
                 }
             }
             if(gameBoardArray[rowPositionNew + right[0]][colPositionNew + right[1]] === 2){
@@ -293,6 +293,9 @@ function checkMoveIfValid() {
                         console.log(gameBoardArray);
                         // $('.gameBoardSquares').empty();
                         // init();
+                    } 
+                    else {
+                        console.log('empty')
                 }
             }
             if(gameBoardArray[rowPositionNew + downLeft[0]][colPositionNew + downLeft[1]] === 2){
@@ -313,6 +316,9 @@ function checkMoveIfValid() {
                         // $('.gameBoardSquares').empty();
                         // init();
                 }
+                else {
+                    console.log('empty')
+            }
             }
         }
         $('.gameBoardSquares').empty();
@@ -427,7 +433,7 @@ function checkMoveIfValid() {
                     // if the piece reaches a same piece the move has already been made
                     }
                     if(gameBoardArray[rowPositionNew + downRight[0]][rowPositionNew + downRight[1]] === 1){
-                        console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+                        console.log('new game piece: ', gameBoardArray[rowPositionNew + downRight[0]][colPositionNew + downRight[1] ] = gameRound);
                         // $(event.currentTarget).addClass('player1Square');
                         console.log(gameBoardArray);
                         // $('.gameBoardSquares').empty();
