@@ -23,7 +23,7 @@ var gameBoardArray =[[0,0,0,0,0,0,0,0],
                     [0,0,0,0,0,0,0,0],
                     [0,0,0,0,0,0,0,0],
                     [0,0,0,0,0,0,0,0]];
-
+ 
 var blackCount=0; 
 var whiteCount=0;   
 
@@ -67,28 +67,23 @@ function init(){
     $('.dynamicSquare').on('click', checkWhiteOrBlack); 
 }
 function checkWhiteOrBlack(){
-    // for(var t = 0; t < boardSize.rows; t++){
-    //     for(var z = 0;  z< boardSize.col; z++){
-    //         if(gameBoardArray[t][z] === 1){
-    //             //black
-    //             black.push([t,z]);
-    //             blackCount++;
-
-    //         }
-    //         else if(gameBoardArray[t][z] === 2){
-    //             //white
-    //             white.push([t,z]);
-    //             whiteCount++;
-    //         }
-    //     }
-    // }
-    // console.log(black, white);
-
-    if(gameRound===1){
-        blackCount++;
-    }else{
-        whiteCount++;
+    for(var t = 0; t < boardSize.rows; t++){
+        for(var z = 0;  z< boardSize.squares; z++){
+            if(gameBoardArray[t][z] === 1){
+                //black
+                blackCount++;
+            }
+            else if(gameBoardArray[t][z] === 2){
+                //white
+                whiteCount++;
+            }
+            // display here 
+            $('#blackCount').text(blackCount);
+            $('#whiteCount').text(whiteCount);
+        }
     }
+    blackCount = 0;
+    whiteCount = 0;
 }
 
 
@@ -167,6 +162,7 @@ function checkMoveIfValid() {
         // if its empty and not undefined
         if (gameBoardArray[rowPositionNew][colPositionNew] === 0 && gameBoardArray[rowPositionNew][colPositionNew] !== undefined) {
             // if its the positions down and not equal to undefined. 
+
             if (gameBoardArray[rowPositionNew + down[0]][colPositionNew + down[1]] === 2) {
                 console.log("I found the opp color");
                 while(gameBoardArray[rowPositionNew + down[0]][colPositionNew + down[1]] === 2){
