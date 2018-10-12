@@ -173,13 +173,13 @@ function checkMoveIfValid() {
                     colPositionNew += down[1];
                     console.log(gameBoardArray);
                     // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
-                        console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                        // $(event.currentTarget).addClass('player1Square');
-                        console.log(gameBoardArray);
-                        // $('.gameBoardSquares').empty();
-                        // init();
                     }
+                if(gameBoardArray[rowPositionNew + down[0]][colPositionNew + down[1]] === 1){
+                    console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+                    // $(event.currentTarget).addClass('player1Square');
+                    console.log(gameBoardArray);
+                    // $('.gameBoardSquares').empty();
+                    // init();    
                 }
             }
             if(gameBoardArray[rowPositionNew + up[0]][colPositionNew + up[1]] === 2) {
@@ -191,13 +191,13 @@ function checkMoveIfValid() {
                     colPositionNew += up[1];
                     console.log(gameBoardArray);
                     // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+                    }
+                    if(gameBoardArray[rowPositionNew + up[0]][colPositionNew + up[1]] === 1){
                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
                         // $(event.currentTarget).addClass('player1Square');
                         console.log(gameBoardArray);
                         // $('.gameBoardSquares').empty();
                         // init();
-                    }
                 }
             }
             if(gameBoardArray[rowPositionNew + upLeft[0]][colPositionNew + upLeft[1]] ===2){
@@ -210,13 +210,13 @@ function checkMoveIfValid() {
                     colPositionNew += upLeft[1];
                     console.log(gameBoardArray);
                     // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+                    }
+                    if(gameBoardArray[rowPositionNew + upLeft[0]][colPositionNew + upLeft[1]] === 1){
                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
                         // $(event.currentTarget).addClass('player1Square');
                         console.log(gameBoardArray);
                         // $('.gameBoardSquares').empty();
                         // init();
-                    }
                 }
             }
             if(gameBoardArray[rowPositionNew + upRight[0]][colPositionNew + upRight[1]]===2){
@@ -229,13 +229,13 @@ function checkMoveIfValid() {
                     colPositionNew += upRight[1];
                     console.log(gameBoardArray);
                     // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+                    }
+                    if(gameBoardArray[rowPositionNew + upRight[0] ][colPositionNew + upRight[1] ] === 1){
                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
                         // $(event.currentTarget).addClass('player1Square');
                         console.log(gameBoardArray);
                         // $('.gameBoardSquares').empty();
                         // init();
-                    }
                 }
             }
             if(gameBoardArray[rowPositionNew + left[0]][colPositionNew + left[1]] === 2){
@@ -248,13 +248,13 @@ function checkMoveIfValid() {
                     colPositionNew += left[1];
                     console.log(gameBoardArray);
                     // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+                    }
+                    if(gameBoardArray[rowPositionNew + + left[0] ][colPositionNew + + left[1]] === 1){
                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
                         // $(event.currentTarget).addClass('player1Square');
                         console.log(gameBoardArray);
                         // $('.gameBoardSquares').empty();
                         // init();
-                    }
                 }
             }
             if(gameBoardArray[rowPositionNew + downRight[0]][colPositionNew + downRight[1]] ===2){
@@ -267,13 +267,13 @@ function checkMoveIfValid() {
                     colPositionNew += downRight[1];
                     console.log(gameBoardArray);
                     // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+                    }
+                    if(gameBoardArray[rowPositionNew + downRight[0]][colPositionNew + downRight[1]] === 1){
                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
                         // $(event.currentTarget).addClass('player1Square');
                         console.log(gameBoardArray);
                         $('.gameBoardSquares').empty();
                         init();
-                    }
                 }
             }
             if(gameBoardArray[rowPositionNew + right[0]][colPositionNew + right[1]] === 2){
@@ -286,13 +286,13 @@ function checkMoveIfValid() {
                     colPositionNew += right[1];
                     console.log(gameBoardArray);
                     // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+                    }
+                    if(gameBoardArray[rowPositionNew + right[0]][colPositionNew + right[1]] === 1){
                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
                         // $(event.currentTarget).addClass('player1Square');
                         console.log(gameBoardArray);
                         // $('.gameBoardSquares').empty();
                         // init();
-                    }
                 }
             }
             if(gameBoardArray[rowPositionNew + downLeft[0]][colPositionNew + downLeft[1]] === 2){
@@ -305,13 +305,13 @@ function checkMoveIfValid() {
                     colPositionNew += downLeft[1];
                     console.log(gameBoardArray);
                     // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+                    }
+                    if(gameBoardArray[rowPositionNew + downLeft[0]][colPositionNew + downLeft[1] ] === 1){
                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
                         // $(event.currentTarget).addClass('player1Square');
                         console.log(gameBoardArray);
                         // $('.gameBoardSquares').empty();
                         // init();
-                    }
                 }
             }
         }
@@ -335,13 +335,13 @@ function checkMoveIfValid() {
                     colPositionNew += down[1];
                     console.log(gameBoardArray);
                     // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
-                        console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
-                        // $(event.currentTarget).addClass('player1Square');
-                        console.log(gameBoardArray);
-                        // $('.gameBoardSquares').empty();
-                        // init();
-                    }
+                }
+                if(gameBoardArray[rowPositionNew + down[0]][colPositionNew + down[1]] === 1){
+                    console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
+                    // $(event.currentTarget).addClass('player1Square');
+                    console.log(gameBoardArray);
+                    // $('.gameBoardSquares').empty();
+                    // init();
                 }
             }
             if(gameBoardArray[rowPositionNew + up[0]][colPositionNew + up[1]] === 1){
@@ -353,13 +353,13 @@ function checkMoveIfValid() {
                     colPositionNew += up[1];
                     console.log(gameBoardArray);
                     // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+                    }
+                    if(gameBoardArray[rowPositionNew + up[0]][rowPositionNew + up[1]] === 1){
                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
                         // $(event.currentTarget).addClass('player1Square');
                         console.log(gameBoardArray);
                         // $('.gameBoardSquares').empty();
                         // init();
-                    }
                 }
             }
             if(gameBoardArray[rowPositionNew + upLeft[0]][colPositionNew + upLeft[1]] === 1){
@@ -371,13 +371,13 @@ function checkMoveIfValid() {
                     colPositionNew += upLeft[1];
                     console.log(gameBoardArray);
                     // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+                    }
+                    if(gameBoardArray[rowPositionNew + upLeft[0]][rowPositionNew + upLeft[1]] === 1){
                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
                         // $(event.currentTarget).addClass('player1Square');
                         console.log(gameBoardArray);
                         // $('.gameBoardSquares').empty();
                         // init();
-                    }
                 }
             }
             if(gameBoardArray[rowPositionNew + upRight[0]][colPositionNew + upRight[1]] ===1){
@@ -389,13 +389,13 @@ function checkMoveIfValid() {
                     colPositionNew += upRight[1];
                     console.log(gameBoardArray);
                     // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+                    }
+                    if(gameBoardArray[rowPositionNew + upRight[0]][rowPositionNew + upRight[1]] === 1){
                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
                         // $(event.currentTarget).addClass('player1Square');
                         console.log(gameBoardArray);
                         // $('.gameBoardSquares').empty();
                         // init();
-                    }
                 }
             }
             if(gameBoardArray[rowPositionNew + left[0]][colPositionNew + left[1]]===1){
@@ -407,13 +407,13 @@ function checkMoveIfValid() {
                     colPositionNew += left[1];
                     console.log(gameBoardArray);
                     // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+                    }
+                    if(gameBoardArray[rowPositionNew + left[0]][rowPositionNew + left[1]] === 1){
                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
                         // $(event.currentTarget).addClass('player1Square');
                         console.log(gameBoardArray);
                         // $('.gameBoardSquares').empty();
                         // init();
-                    }
                 }
             }
             if(gameBoardArray[rowPositionNew + downRight[0]][colPositionNew + downRight[1]]===1){
@@ -425,13 +425,13 @@ function checkMoveIfValid() {
                     colPositionNew += downRight[1];
                     console.log(gameBoardArray);
                     // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+                    }
+                    if(gameBoardArray[rowPositionNew + downRight[0]][rowPositionNew + downRight[1]] === 1){
                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
                         // $(event.currentTarget).addClass('player1Square');
                         console.log(gameBoardArray);
                         // $('.gameBoardSquares').empty();
                         // init();
-                    }
                 }
             }
             if(gameBoardArray[rowPositionNew + right[0]][colPositionNew + right[1]]===1){
@@ -443,13 +443,13 @@ function checkMoveIfValid() {
                     colPositionNew += right[1];
                     console.log(gameBoardArray);
                     // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+                    }
+                    if(gameBoardArray[rowPositionNew + right[0]][rowPositionNew + right[1]] === 1){
                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
                         // $(event.currentTarget).addClass('player1Square');
                         console.log(gameBoardArray);
                         // $('.gameBoardSquares').empty();
                         // init();
-                    }
                 }
             }
             if(gameBoardArray[rowPositionNew + downLeft[0]][colPositionNew + downLeft[1]]===1){
@@ -461,13 +461,13 @@ function checkMoveIfValid() {
                     colPositionNew += downLeft[1];
                     console.log(gameBoardArray);
                     // if the piece reaches a same piece the move has already been made
-                    if(gameBoardArray[rowPositionNew][colPositionNew] === 1){
+                    }
+                    if(gameBoardArray[rowPositionNew + downLeft[0]][rowPositionNew + downLeft[1]] === 1){
                         console.log('new game piece: ', gameBoardArray[rowPositionNew][colPositionNew] = gameRound);
                         // $(event.currentTarget).addClass('player1Square');
                         console.log(gameBoardArray);
                         // $('.gameBoardSquares').empty();
                         // init();
-                    }
                 }
             }
             
