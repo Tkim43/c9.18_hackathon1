@@ -122,7 +122,6 @@ function player2(){
 
 // Display who the current player is based on the game round and allow click.
 function displayCurrentPlayer(gameRound) {
-
     if (gameRound === 1) {
         //highlight the player 1's position
 
