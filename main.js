@@ -48,7 +48,7 @@ function buildGame(){
                 var newDiv1 = $('<div>').addClass('dynamicSquare player1Square')
                 newDiv1.attr("row", rows);
                 newDiv1.attr("col", col);
-                outerLoop.append(newDiv1)
+                outerLoop.append(newDiv1);
             }
             else {
                 var newDiv2 = $('<div>').addClass('dynamicSquare player2Square')
@@ -68,6 +68,7 @@ function init(){
     $('.dynamicSquare').on('click', playSound); 
     displayCurrentPlayer(gameRound); 
     $('.dynamicSquare').on('click', checkWhiteOrBlack); 
+    
 }
 function checkWhiteOrBlack(){
     for(var t = 0; t < boardSize.rows; t++){
@@ -83,6 +84,8 @@ function checkWhiteOrBlack(){
             // display here 
             $('#blackCount').text(blackCount);
             $('#whiteCount').text(whiteCount);
+            
+            determineWinner();
         }
     }
     blackCount = 0;
@@ -132,7 +135,25 @@ function displayCurrentPlayer(gameRound) {
     }
 }
 
-function determineWiner(){
+function determineWinner(){
+    if (blackCount+whiteCount===10){
+        if(blackCount>whiteCount){
+            console.log("black is the winner");
+            $("#blackModal").modal("show");
+            return
+
+        }else if(whiteCount>blackCount){
+            console.log("white is the winner");
+            $("#whiteModal").modal("show");
+            return
+
+        }else if(whiteCount===blackCount){
+            console.log("it's a tie");
+            $("#tieModal").modal("show");
+            return
+
+        }
+    }
 
 }
 /*
@@ -151,7 +172,6 @@ function switchGamePiece(coordinates) {
         }
     }
 }
-
 /*
 Below:
 proceedDirection function is called from the checkMoveIfValid function. 
