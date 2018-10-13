@@ -282,6 +282,7 @@ body{
     height: 100%; 
     text-align: center;
     font-size: 3vh;
+    
 }
 
 #blackCount, #whiteCount{
@@ -289,11 +290,13 @@ font-size:3vh;
 /* text-align:center; */
 position: relative;
 left:17%;
+
 }
 
 .highlightCP {
     border: solid salmon; 
     border-radius: 50%;
+    background-color: aquamarine;
 }
 
 @keyframes flickerAnimation {
@@ -316,7 +319,7 @@ left:17%;
     50%  { opacity:0; }
     100% { opacity:1; }
   }
-  .highlightCP  {
+  .highlightCP {
      -webkit-animation: flickerAnimation 2.5s infinite;
      -moz-animation: flickerAnimation 2.5s infinite;
      -o-animation: flickerAnimation 2.5s infinite;
@@ -334,6 +337,7 @@ left:17%;
     /* float: left; */
     display:inline-block;
     /* background-image:linear-gradient(green,yellowgreen); */
+    
   
   
 }
@@ -343,6 +347,18 @@ left:17%;
     height: 100%;
     width: 10%;
     border: solid 1px #3b3a30;
+    
+    
+    
+}
+
+.gamePieceDiv{
+    /* background-color: #2E8B57; */
+    display: inline-block;
+    height: 100%;
+    width: 10%;
+    border: solid 1px #3b3a30;
+    
     
     
 }
@@ -366,4 +382,9 @@ left:17%;
     border-radius: 50%;
     
 }
-
+.highSquare{
+    background-color: green;
+}
+#blackModal p, #whiteModal p, #tieModal p{
+    font-size:40px;
+}
