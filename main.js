@@ -72,6 +72,7 @@ function init(){
     $('.dynamicSquare').on('click', playSound);
     displayCurrentPlayer(gameRound);
     $('.dynamicSquare').on('click', checkWhiteOrBlack);
+    determineWinner();
 }
 function checkWhiteOrBlack(){
     for(var t = 0; t < boardSize.rows; t++){
@@ -122,7 +123,6 @@ function player2(){
 
 // Display who the current player is based on the game round and allow click.
 function displayCurrentPlayer(gameRound) {
-
     if (gameRound === 1) {
         //highlight the player 1's position
 
@@ -136,7 +136,25 @@ function displayCurrentPlayer(gameRound) {
     }
 }
 
-function determineWiner(){
+function determineWinner(){
+    if (blackCount+whiteCount===64){
+        if(blackCount>whiteCount){
+            console.log("black is the winner");
+            $("#blackModal").modal("show");
+            return
+
+        }else if(whiteCount>blackCount){
+            console.log("white is the winner");
+            $("#whiteModal").modal("show");
+            return
+
+        }else if(whiteCount===blackCount){
+            console.log("it's a tie");
+            $("#tieModal").modal("show");
+            return
+
+        }
+    }
 
 }
 /*
