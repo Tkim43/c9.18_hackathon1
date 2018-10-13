@@ -13,6 +13,8 @@ var blackCount = 0;
 var whiteCount = 0;
 var boardSize = { rows: 8, squares: 8 };
 
+var noOfGame = 1;
+
 var gameBoardArray =[[0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0],
@@ -68,11 +70,31 @@ function init(){
     convertsBoard();
     // $('.dynamicSquare').on('click',checkMove);
     $('.dynamicSquare').on('click', checkMoveIfValid);
-    highLightSquares(gameRound);
+
+
+    //highLightSquares(gameRound);
+    //FIXED HERE
+    if(noOfGame === 1){
+        highLightSquares(gameRound);
+        noOfGame = 0;
+    }
+    else if(noOfGame === 0){
+        // i need to change the current player here
+        if ( currentPlayer === 1){
+            player1();
+        }
+        else if(currentPlayer === 2){
+            player2();
+        }
+        highLightSquares(gameRound);
+    }
+
+    //checkMove();
     $('.dynamicSquare').on('click', playSound);
     displayCurrentPlayer(gameRound);
     $('.dynamicSquare').on('click', checkWhiteOrBlack);
     determineWinner();
+
 }
 function checkWhiteOrBlack(){
     for(var t = 0; t < boardSize.rows; t++){
@@ -155,7 +177,6 @@ function determineWinner(){
 
         }
     }
-
 }
 /*
 Below:
@@ -289,8 +310,6 @@ function checkMoveIfValid() {
     var rowPosition = parseInt($(event.currentTarget).attr('row'));
     var colPosition = parseInt($(event.currentTarget).attr('col'));
     console.log('current position: ', rowPosition, colPosition);
-    highLightSquares(gameRound);
-
 
 
     //Below: if its a previous clicked position (current or opposing player), prohibit click and exit.
@@ -332,14 +351,16 @@ function checkMoveIfValid() {
         $('.gameBoardSquares').empty();
         box =[];
         init();
-        player1();
+        // player1();
     }
     else if (currentPlayer === 2 && moveIsValid === true) {
         $('.gameBoardSquares').empty();
         box=[];
+        // player2();
         init();
-        player2();
+        // player2();
     }
+
 }
 function convertsBoard(){
     var rows =$('.row');
@@ -349,40 +370,44 @@ function convertsBoard(){
     }
     console.log(box);
 }
-// function checkMove(){
-//     var rowPosition = $(event.currentTarget).attr('row');
-//     var colPosition = $(event.currentTarget).attr('col');
-//     var colPositionNew = parseInt(colPosition);
-//     var rowPositionNew = parseInt(rowPosition);
-//     // if the position that we clicked is green then change it to the same player color
-//     if(gameRound ===1) {
-//         if ($(box[rowPositionNew][colPositionNew]).hasClass('highSquare')) {
-//             $(box[rowPositionNew][colPositionNew]).removeClass('highSquare');
-//             $(box[rowPositionNew][colPositionNew]).addClass('player1Square');
-//             $('div').removeClass('highSquare');
-//             // flipCoin();
-//
-//             gameRound =2;
-//         }
-//     }
-//     else if(gameRound ===2){
-//         if ($(box[rowPositionNew][colPositionNew]).hasClass('highSquare')) {
-//             $(box[rowPositionNew][colPositionNew]).removeClass('highSquare');
-//             $(box[rowPositionNew][colPositionNew]).addClass('player2Square');
-//             $('div').removeClass('highSquare');
-//             // flipCoin();
-//             gameRound =1;
-//         }
-//     }
-//     highLightSquares(gameRound);
-//     console.log(gameRound);
-//     console.log("went into checkMove function");
-//
-// }
+
+
+function checkMove(){
+    var rowPosition = $(event.currentTarget).attr('row');
+    var colPosition = $(event.currentTarget).attr('col');
+    var colPositionNew = parseInt(colPosition);
+    var rowPositionNew = parseInt(rowPosition);
+    // if the position that we clicked is green then change it to the same player color
+    if(gameRound ===1) {
+        if ($(box[rowPositionNew][colPositionNew]).hasClass('highSquare')) {
+            $(box[rowPositionNew][colPositionNew]).removeClass('highSquare');
+            $(box[rowPositionNew][colPositionNew]).addClass('player1Square');
+            $('div').removeClass('highSquare');
+            // flipCoin();
+
+            gameRound =2;
+        }
+    }
+    else if(gameRound ===2){
+        if ($(box[rowPositionNew][colPositionNew]).hasClass('highSquare')) {
+            $(box[rowPositionNew][colPositionNew]).removeClass('highSquare');
+            $(box[rowPositionNew][colPositionNew]).addClass('player2Square');
+            $('div').removeClass('highSquare');
+            // flipCoin();
+            gameRound =1;
+        }
+    }
+    highLightSquares(gameRound);
+    console.log(gameRound);
+    console.log("went into checkMove function");
+
+}
+
+
 function highLightSquares(turnsNum) {
     // depending on the gameRound find the opposite
     if (turnsNum === 1) {
-        gameRound = 2;
+        //gameRound = 2;
         for (var i = 0; i < boardSize.rows; i++) {
             for (var j = 0; j < boardSize.squares; j++) {
                 // i want to get the row and column of the black squares
@@ -442,17 +467,17 @@ function highLightSquares(turnsNum) {
         }
     }
     else if (turnsNum === 2) {
-        gameRound = 1;
+        //gameRound = 1;
         for (var t = 0; t < boardSize.rows; t++) {
-            for (var a = 0; a < boardSize.col; a++) {
+            for (var a = 0; a < boardSize.squares; a++) {
                 // i want to get the row and column of the black squares
                 squareColor = $(box[t][a]);
                 // if it has the same color then we want to check around it
                 if (squareColor.hasClass('player2Square')) {
                     // wherever the position is at i want to increase it with the directional vectors
 
-                    for (var b = -1; b <= 2; b++) {
-                        for (var c = -1; c <= 2; c++) {
+                    for (var b = -1; b < 2; b++) {
+                        for (var c = -1; c < 2; c++) {
                             // gets you columnNumber and Row Number of the positions they are at
                             // find the empty spaces an those are the moves they can make
                             rowNum = squareColor.attr('row');
@@ -499,7 +524,6 @@ function highLightSquares(turnsNum) {
         }
 
     }
-
 }
 
 function playSound(){
