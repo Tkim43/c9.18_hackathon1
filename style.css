@@ -382,7 +382,9 @@ left:17%;
     border-radius: 50%;
     
 }
-
+.highSquare{
+    background-color: green;
+}
 #blackModal p, #whiteModal p, #tieModal p{
     font-size:40px;
 }
