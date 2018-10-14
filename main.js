@@ -403,6 +403,14 @@ function checkMove(){
 
 }
 
+function playSound(){
+    var player=new Audio();
+    player.src="http://www.mit.edu/afs/athena/project/windowmgr/share/Enlightenment/config/snd/Bubbles.wav";
+    player.play()
+}
+
+
+
 
 function highLightSquares(turnsNum) {
     // depending on the gameRound find the opposite
@@ -430,34 +438,41 @@ function highLightSquares(turnsNum) {
                             console.log(columnNum);
                             columnNum = columnNum + l;
 
-                            // if its the opposite color
-                            if ($(box[rowNum][columnNum]).hasClass('player2Square')) {
-                                //rowNum = rowNum + k;
-                                //columnNum = columnNum +l;
-                                console.log(rowNum, columnNum);
-                                // keep adding until it hits an empty square
-                                var stop = false;
+                            if (rowNum > -1 && columnNum > -1 && rowNum < 8 && columnNum < 8){
+                                // if its the opposite color
+                                if ($(box[rowNum][columnNum]).hasClass('player2Square')) {
+                                    //rowNum = rowNum + k;
+                                    //columnNum = columnNum +l;
+                                    console.log(rowNum, columnNum);
+                                    // keep adding until it hits an empty square
+                                    var stop = false;
 
-                                while ($(box[rowNum][columnNum]).hasClass('player2Square') || stop === false) {
-                                    rowNum = rowNum + k;
-                                    columnNum = columnNum + l;
-                                    if (rowNum === undefined || columnNum === undefined || rowNum < 0 || columnNum < 0) {
-                                        break;
-                                    }
-                                    else if ($(box[rowNum][columnNum]).hasClass('empty')) {
-                                        // error because it cant highlight an undefined square
-                                        $(box[rowNum][columnNum]).addClass('highSquare');
-                                        // gameRound =2;
-                                        stop = true;
-                                    }
-                                    else if ($(box[rowNum][columnNum]).hasClass('player1Square')) {
-                                        // highLightSquares(gameRound);
-                                        stop = true;
+                                    // while ($(box[rowNum][columnNum]).hasClass('player2Square') || stop === false) {
+                                    while (stop === false) {
+                                        rowNum = rowNum + k;
+                                        columnNum = columnNum + l;
+                                        console.log("????? : ", rowNum, columnNum);
+                                        if(rowNum < 0 || columnNum < 0 || rowNum > 7 || columnNum > 7) {
+                                            stop = true;
+                                        }
+                                        else{
+                                            if ($(box[rowNum][columnNum]).hasClass('empty')) {
+                                                // error because it cant highlight an undefined square
+                                                $(box[rowNum][columnNum]).addClass('highSquare');
+                                                // gameRound =2;
+                                                stop = true;
+                                            }
+                                            else if ($(box[rowNum][columnNum]).hasClass('player1Square')) {
+                                                // highLightSquares(gameRound);
+                                                stop = true;
+                                            }
+                                        }
+
                                     }
 
                                 }
-
                             }
+
                         }
                     }
 
@@ -484,37 +499,46 @@ function highLightSquares(turnsNum) {
                             rowNum = parseInt(rowNum);
                             console.log(rowNum);
                             rowNum = rowNum + b;
+
                             columnNum = squareColor.attr('col');
                             columnNum = parseInt(columnNum);
                             console.log(columnNum);
                             columnNum = columnNum + c;
 
-                            // if its the opposite color
-                            if ($(box[rowNum][columnNum]).hasClass('player1Square')) {
-                                //rowNum = rowNum + k;
-                                //columnNum = columnNum +l;
-                                console.log(rowNum, columnNum);
-                                // keep adding until it hits an empty square
-                                stop = false;
 
-                                while ($(box[rowNum][columnNum]).hasClass('player1Square') || stop === false) {
-                                    rowNum = rowNum + b;
-                                    columnNum = columnNum + c;
-                                    debugger;
-                                    if (rowNum < 0 || columnNum < 0 || rowNum === undefined || columnNum === undefined) {
-                                        break;
+                            if (rowNum > -1 && columnNum > -1 && rowNum < 8 && columnNum < 8) {
+                                // if its the opposite color
+                                if ($(box[rowNum][columnNum]).hasClass('player1Square')) {
+                                    //rowNum = rowNum + k;
+                                    //columnNum = columnNum +l;
+                                    console.log(rowNum, columnNum);
+                                    // keep adding until it hits an empty square
+                                    stop = false;
+
+                                    // while ($(box[rowNum][columnNum]).hasClass('player1Square') || stop === false) {
+                                    while ( stop === false) {
+                                        rowNum = rowNum + b;
+                                        columnNum = columnNum + c;
+                                        debugger;
+                                        if(rowNum < 0 || columnNum < 0 || rowNum > 7 || columnNum > 7) {
+                                            stop = true;
+                                        }
+                                        else{
+                                            if ($(box[rowNum][columnNum]).hasClass('empty')) {
+                                                $(box[rowNum][columnNum]).addClass('highSquare');
+                                                stop = true;
+                                            }
+                                            else if ($(box[rowNum][columnNum]).hasClass('player2Square')) {
+                                                // highLightSquares(gameRound);
+                                                stop = true;
+                                            }
+                                        }
                                     }
-                                    else if ($(box[rowNum][columnNum]).hasClass('empty')) {
-                                        $(box[rowNum][columnNum]).addClass('highSquare');
-                                        stop = true;
-                                    }
-                                    else if ($(box[rowNum][columnNum]).hasClass('player2Square')) {
-                                        // highLightSquares(gameRound);
-                                        stop = true;
-                                    }
+
                                 }
-
                             }
+
+
                         }
                     }
 
@@ -526,8 +550,131 @@ function highLightSquares(turnsNum) {
     }
 }
 
-function playSound(){
-    var player=new Audio();
-    player.src="http://www.mit.edu/afs/athena/project/windowmgr/share/Enlightenment/config/snd/Bubbles.wav";
-    player.play()
-}
+
+
+
+
+
+//
+// function highLightSquares(turnsNum) {
+//     // depending on the gameRound find the opposite
+//     if (turnsNum === 1) {
+//         //gameRound = 2;
+//         for (var i = 0; i < boardSize.rows; i++) {
+//             for (var j = 0; j < boardSize.squares; j++) {
+//                 // i want to get the row and column of the black squares
+//                 // debugger;
+//                 var squareColor = $(box[i][j]);
+//                 // if it has the same color then we want to check around it
+//                 if (squareColor.hasClass('player1Square')) {
+//                     // wherever the position is at i want to increase it with the directional vectors
+//
+//                     for (var k = -1; k < 2; k++) {
+//                         for (var l = -1; l < 2; l++) {
+//                             // gets you columnNumber and Row Number of the positions they are at
+//                             // find the empty spaces an those are the moves they can make
+//                             var rowNum = squareColor.attr('row');
+//                             rowNum = parseInt(rowNum);
+//                             console.log(rowNum);
+//                             rowNum = rowNum + k;
+//                             var columnNum = squareColor.attr('col');
+//                             columnNum = parseInt(columnNum);
+//                             console.log(columnNum);
+//                             columnNum = columnNum + l;
+//
+//                             // if its the opposite color
+//                             if ($(box[rowNum][columnNum]).hasClass('player2Square')) {
+//                                 //rowNum = rowNum + k;
+//                                 //columnNum = columnNum +l;
+//                                 console.log(rowNum, columnNum);
+//                                 // keep adding until it hits an empty square
+//                                 var stop = false;
+//
+//                                 while ($(box[rowNum][columnNum]).hasClass('player2Square') || stop === false) {
+//                                     rowNum = rowNum + k;
+//                                     columnNum = columnNum + l;
+//                                     if (rowNum === undefined || columnNum === undefined || rowNum < -1 || columnNum < -1) {
+//                                         break;
+//                                     }
+//                                     else if ($(box[rowNum][columnNum]).hasClass('empty')) {
+//                                         // error because it cant highlight an undefined square
+//                                         $(box[rowNum][columnNum]).addClass('highSquare');
+//                                         // gameRound =2;
+//                                         stop = true;
+//                                     }
+//                                     else if ($(box[rowNum][columnNum]).hasClass('player1Square')) {
+//                                         // highLightSquares(gameRound);
+//                                         stop = true;
+//                                     }
+//
+//                                 }
+//
+//                             }
+//                         }
+//                     }
+//
+//
+//                 }
+//             }
+//         }
+//     }
+//     else if (turnsNum === 2) {
+//         //gameRound = 1;
+//         for (var t = 0; t < boardSize.rows; t++) {
+//             for (var a = 0; a < boardSize.squares; a++) {
+//                 // i want to get the row and column of the black squares
+//                 squareColor = $(box[t][a]);
+//                 // if it has the same color then we want to check around it
+//                 if (squareColor.hasClass('player2Square')) {
+//                     // wherever the position is at i want to increase it with the directional vectors
+//
+//                     for (var b = -1; b < 2; b++) {
+//                         for (var c = -1; c < 2; c++) {
+//                             // gets you columnNumber and Row Number of the positions they are at
+//                             // find the empty spaces an those are the moves they can make
+//                             rowNum = squareColor.attr('row');
+//                             rowNum = parseInt(rowNum);
+//                             console.log(rowNum);
+//                             rowNum = rowNum + b;
+//
+//                             columnNum = squareColor.attr('col');
+//                             columnNum = parseInt(columnNum);
+//                             console.log(columnNum);
+//                             columnNum = columnNum + c;
+//
+//                             // if its the opposite color
+//                             if ($(box[rowNum][columnNum]).hasClass('player1Square')) {
+//                                 //rowNum = rowNum + k;
+//                                 //columnNum = columnNum +l;
+//                                 console.log(rowNum, columnNum);
+//                                 // keep adding until it hits an empty square
+//                                 stop = false;
+//
+//                                 while ($(box[rowNum][columnNum]).hasClass('player1Square') || stop === false) {
+//                                     rowNum = rowNum + b;
+//                                     columnNum = columnNum + c;
+//                                     debugger;
+//                                     if (rowNum < -2 || columnNum < -2 || rowNum === undefined || columnNum === undefined) {
+//                                         break;
+//                                     }
+//                                     else if ($(box[rowNum][columnNum]).hasClass('empty')) {
+//                                         $(box[rowNum][columnNum]).addClass('highSquare');
+//                                         stop = true;
+//                                     }
+//                                     else if ($(box[rowNum][columnNum]).hasClass('player2Square')) {
+//                                         // highLightSquares(gameRound);
+//                                         stop = true;
+//                                     }
+//                                 }
+//
+//                             }
+//                         }
+//                     }
+//
+//
+//                 }
+//             }
+//         }
+//
+//     }
+// }
