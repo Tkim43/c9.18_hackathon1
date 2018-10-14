@@ -110,6 +110,7 @@ function checkWhiteOrBlack(){
             // display here
             $('#blackCount').text(blackCount);
             $('#whiteCount').text(whiteCount);
+            determineWinner();
         }
     }
     blackCount = 0;
@@ -372,36 +373,36 @@ function convertsBoard(){
 }
 
 
-function checkMove(){
-    var rowPosition = $(event.currentTarget).attr('row');
-    var colPosition = $(event.currentTarget).attr('col');
-    var colPositionNew = parseInt(colPosition);
-    var rowPositionNew = parseInt(rowPosition);
-    // if the position that we clicked is green then change it to the same player color
-    if(gameRound ===1) {
-        if ($(box[rowPositionNew][colPositionNew]).hasClass('highSquare')) {
-            $(box[rowPositionNew][colPositionNew]).removeClass('highSquare');
-            $(box[rowPositionNew][colPositionNew]).addClass('player1Square');
-            $('div').removeClass('highSquare');
-            // flipCoin();
-
-            gameRound =2;
-        }
-    }
-    else if(gameRound ===2){
-        if ($(box[rowPositionNew][colPositionNew]).hasClass('highSquare')) {
-            $(box[rowPositionNew][colPositionNew]).removeClass('highSquare');
-            $(box[rowPositionNew][colPositionNew]).addClass('player2Square');
-            $('div').removeClass('highSquare');
-            // flipCoin();
-            gameRound =1;
-        }
-    }
-    highLightSquares(gameRound);
-    console.log(gameRound);
-    console.log("went into checkMove function");
-
-}
+// function checkMove(){
+//     var rowPosition = $(event.currentTarget).attr('row');
+//     var colPosition = $(event.currentTarget).attr('col');
+//     var colPositionNew = parseInt(colPosition);
+//     var rowPositionNew = parseInt(rowPosition);
+//     // if the position that we clicked is green then change it to the same player color
+//     if(gameRound ===1) {
+//         if ($(box[rowPositionNew][colPositionNew]).hasClass('highSquare')) {
+//             $(box[rowPositionNew][colPositionNew]).removeClass('highSquare');
+//             $(box[rowPositionNew][colPositionNew]).addClass('player1Square');
+//             $('div').removeClass('highSquare');
+//             // flipCoin();
+//
+//             gameRound =2;
+//         }
+//     }
+//     else if(gameRound ===2){
+//         if ($(box[rowPositionNew][colPositionNew]).hasClass('highSquare')) {
+//             $(box[rowPositionNew][colPositionNew]).removeClass('highSquare');
+//             $(box[rowPositionNew][colPositionNew]).addClass('player2Square');
+//             $('div').removeClass('highSquare');
+//             // flipCoin();
+//             gameRound =1;
+//         }
+//     }
+//     highLightSquares(gameRound);
+//     console.log(gameRound);
+//     console.log("went into checkMove function");
+//
+// }
 
 function playSound(){
     var player=new Audio();
