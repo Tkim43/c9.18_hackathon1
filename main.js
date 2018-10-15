@@ -90,7 +90,7 @@ function init(){
     }
 
     //checkMove();
-    $('.dynamicSquare').on('click', playSound);
+    // $('.dynamicSquare').on('click', playSound);
     displayCurrentPlayer(gameRound);
     $('.dynamicSquare').on('click', checkWhiteOrBlack);
     determineWinner();
@@ -102,16 +102,19 @@ function checkWhiteOrBlack(){
             if(gameBoardArray[t][z] === 1){
                 //black
                 blackCount++;
+
             }
             else if(gameBoardArray[t][z] === 2){
                 //white
                 whiteCount++;
+                
             }
             // display here
             $('#blackCount').text(blackCount);
             $('#whiteCount').text(whiteCount);
             determineWinner();
         }
+        
     }
     blackCount = 0;
     whiteCount = 0;
@@ -141,6 +144,7 @@ function player2(){
         moveIsValid = false;
     }
     console.log('Game Round: ', gameRound);
+    
 }
 
 
@@ -151,6 +155,7 @@ function displayCurrentPlayer(gameRound) {
 
         $('.playerBorder1').addClass('highlightCP');
         $('.playerBorder2').removeClass('highlightCP');
+        
     }
     else {
         //highlight the player 2's position
@@ -164,11 +169,13 @@ function determineWinner(){
         if(blackCount>whiteCount){
             console.log("black is the winner");
             $("#blackModal").modal("show");
+            playWinnerSound();
             return
 
         }else if(whiteCount>blackCount){
             console.log("white is the winner");
             $("#whiteModal").modal("show");
+            playWinnerSound();
             return
 
         }else if(whiteCount===blackCount){
@@ -256,7 +263,7 @@ function proceedDirection(rowPositionNew, colPositionNew, direction, rowPosition
                 rowPositionNew++;
                 colPositionNew--;
             }
-        }
+        } 
     }
     //Below: if in the while loop, it never returned the storage, we hit a dead-end and must return false.
     return false;
@@ -315,8 +322,9 @@ function checkMoveIfValid() {
 
     //Below: if its a previous clicked position (current or opposing player), prohibit click and exit.
     if (gameBoardArray[rowPosition][colPosition] === currentPlayer || gameBoardArray[rowPosition][colPosition] === opponentPlayer) {
+        playWrongSound();
         return;
-    }
+    } 
     //Below: if the position clicked is an empty space, then check all directions.
     for (var row = -1; row < 2; row++) {
         for (var col = -1; col < 2; col++) {
@@ -342,10 +350,12 @@ function checkMoveIfValid() {
                 else {
                     switchGamePiece(arrayOfCoordinates);
                     moveIsValid=true;
-                }
+                    playSound();
+                    
+                } 
             }
-        }
-    }
+        } 
+    } 
     //Below: after all checks have been completed, swap the game board to reflect the gameBoardArray (new 1's or new 2's)
     //and switch players.
     if (currentPlayer === 1 && moveIsValid === true) {
@@ -361,7 +371,6 @@ function checkMoveIfValid() {
         init();
         // player2();
     }
-
 }
 function convertsBoard(){
     var rows =$('.row');
@@ -407,6 +416,18 @@ function convertsBoard(){
 function playSound(){
     var player=new Audio();
     player.src="http://www.mit.edu/afs/athena/project/windowmgr/share/Enlightenment/config/snd/Bubbles.wav";
+    player.play()
+}
+
+function playWinnerSound(){
+    var player=new Audio();
+    player.src="http://appinventor.mit.edu/explore/sites/all/files/teachingappcreation/unit1/TaDasound.mp3";
+    player.play()
+}
+
+function playWrongSound(){
+    var player=new Audio();
+    player.src="http://www.superluigibros.com/downloads/sounds/SNES/SMRPG/wav/smrpg_wrong.wav";
     player.play()
 }
 
@@ -520,7 +541,7 @@ function highLightSquares(turnsNum) {
                                     while ( stop === false) {
                                         rowNum = rowNum + b;
                                         columnNum = columnNum + c;
-                                        debugger;
+                                    
                                         if(rowNum < 0 || columnNum < 0 || rowNum > 7 || columnNum > 7) {
                                             stop = true;
                                         }
