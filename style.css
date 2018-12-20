@@ -13,15 +13,6 @@ body{
    
 }
 
-/* #background-wrap {
-    bottom: 0;
-	left: 0;
-	position: fixed;
-	right: 0;
-	top: 0;
-	z-index: -1;
-} */
-
 /* KEYFRAMES */
 
 @-webkit-keyframes animateBubble {
@@ -256,7 +247,7 @@ body{
 }
 .header {
     width: 70%;
-    height: 10%;
+    height: 20%;
     font-family: 'Numans', sans-serif;
     font-size: 5em;
     text-align: center;
@@ -264,17 +255,14 @@ body{
 }
 .playerContainer {
     width: 20%;
-    /* background-color: bisque; */
     height: 80%;
     display: inline-block;
     vertical-align: top;
-
-    /* background-image:linear-gradient(#d5f4e6,#ffef96); */
     margin-left:4%;
 }
 .playerBorder1, .playerBorder2 {
     width: 40%;
-    height: 15%;
+    height: 18%;
 }
 .player1, .player2{
     position: relative;
@@ -288,39 +276,38 @@ body{
 
 #blackCount, #whiteCount{
 font-size:2em;
-/* text-align:center; */
 position: relative;
-left:15.7%;
+left:13%;
 border-bottom: darkgray solid 1px;
 width: 10%;
 }
 
 
 .highlightCP {
+    position: relative;
+    bottom: 5%;
     border-bottom: solid white 4px; 
-    /* border-radius: 50%; */
-    /* background-image:linear-gradient(#d0b6eb,#00f6ff) */
 }
 
 @keyframes flickerAnimation {
-    0%   { opacity:1; }
-    50%  { opacity:0; }
-    100% { opacity:1; }
+    0%   { opacity:4; }
+    50%  { opacity:0.5; }
+    100% { opacity:4; }
   }
   @-o-keyframes flickerAnimation{
-    0%   { opacity:1; }
-    50%  { opacity:0; }
-    100% { opacity:1; }
+    0%   { opacity:4; }
+    50%  { opacity:0.5; }
+    100% { opacity:4; }
   }
   @-moz-keyframes flickerAnimation{
-    0%   { opacity:1; }
-    50%  { opacity:0; }
-    100% { opacity:1; }
+    0%   { opacity:4; }
+    50%  { opacity:0.5; }
+    100% { opacity:4; }
   }
   @-webkit-keyframes flickerAnimation{
-    0%   { opacity:1; }
-    50%  { opacity:0; }
-    100% { opacity:1; }
+    0%   { opacity:4; }
+    50%  { opacity:0.5; }
+    100% { opacity:4; }
   }
   .highSquare {
      -webkit-animation: flickerAnimation 2.5s infinite;
@@ -332,27 +319,23 @@ width: 10%;
 
 
 .gameBoardSquares{
-    width: 60%;
-    height: 80%;
+    width: 55%;
+    height: 85%;
     display: flex;
     flex-flow: column nowrap;
     position: relative;
-    left: 1.5%;
+    left: 5%;
     display:inline-block;
 }
 .dynamicSquare{
-    /* background-color: #2E8B57; */
     display: inline-block;
     height: 100%;
     width: 10%;
     border: solid 1px #3b3a30;
     
-    
-    
 }
 
 .gamePieceDiv{
-    /* background-color: #2E8B57; */
     display: inline-block;
     height: 100%;
     width: 10%;
@@ -364,19 +347,16 @@ width: 10%;
 
 
 .row {
-    height: 12.5%;
+    height: 11%;
+    width: 100%;
 }
 
 .player1Square{
-    /* background-color:black; */
     border-radius: 50%;
-
     background-image: linear-gradient(black,#282828,gray );
-    
 
 }
 .player2Square{
-    /* background-color:white; */
     background-image: linear-gradient(navajowhite,white);
     border-radius: 50%;
     
@@ -392,7 +372,7 @@ width: 10%;
     display: flex;
     justify-content: center;
     position: relative;
-    height: 8%;
+    height: 12%;
     bottom: 1%;
 }
 .flip-card {
