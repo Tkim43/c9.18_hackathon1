@@ -2,43 +2,80 @@
 <html lang="en"> 
 <head>
     <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Charmonman" rel="stylesheet">
-    <!--<link rel="stylesheet" href="css/animations.css">-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|EB+Garamond|Englebert|Julius+Sans+One|Luckiest+Guy|Numans|Permanent+Marker|Press+Start+2P|Sirin+Stencil" rel="stylesheet">    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="main.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
-
     <title>Title</title>   
 </head>
 <body>
 
-        <div class="winnerContainer">
-                <!-- Trigger the modal with a button -->
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Winner</button>
-              
-                <!-- Modal -->
-                <div class="modal fade" id="myModal">
-                  <div class="modal-dialog">
-                  
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Congratulation!</h4>
-                      </div>
-                      <div class="modal-body">
-                        <p>______is the winner</p>
-                      </div>
-                      
-                    </div>
-                    
-                  </div>
-                </div>
-                
-        </div>    
-                
+<div class="card-container">
+<div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+          <div class = "header">Reversi</div>
+      </div>
+      <div class="flip-card-back">
+        <p class="header">Othello</p>
+      </div>
+    </div>
+</div>
+</div>
+<div class="about-container">
+    <p class="about">Reversi is a classic board game for two players just like chess, checkers and go. Black and white, the dark and the light, the good and the bad battle each other for victory. Reversi is a very dynamic board game; the board position can change dramatically with each move. Reversi is also known as Othello.</p>
+</div>
+
+<div class="winnerContainer">
+  <div class="modal fade" id="blackModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Congratulation!</h4>
+        </div>
+        <div class="modal-body">
+          <p>Black pearl player is the winner</p>
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>  
+
+<div class="winnerContainer">
+  <div class="modal fade" id="whiteModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Congratulation!</h4>
+        </div>
+        <div class="modal-body">
+          <p>White pearl player is the winner</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  
+
+<div class="winnerContainer">
+  <div class="modal fade" id="tieModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Tie</h4>
+        </div>
+        <div class="modal-body">
+          <p>Tie</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>                     
 
 <div id="background-wrap">
     <div class="bubble x1"></div>
@@ -53,31 +90,19 @@
     <div class="bubble x10"></div>
 </div>
 
-
-            
 <div class='container'>
-    <div class = 'header'>Reversi Game</div>
     <div class="playerContainer">
-        
         <div class ='playerBorder1'>
-            <div class='player1'>Player 1</div>
+            <div class='player1 player'>Player 1</div>
         </div> 
         <div id="blackCount">0</div>
         <div class ='playerBorder2'>
-            <div class='player2'>Player 2</div>
+            <div class='player2 player'>Player 2</div>
         </div>
         <div id="whiteCount">0</div>
-
-        
-        
     </div>
     <div class="gameBoardSquares"></div>
 </div>
-
-
-      
-
-
 
 
 </body>
